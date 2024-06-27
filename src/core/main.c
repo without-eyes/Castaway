@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include  "../include/castaway.h"
+#include  "../../include/core/castaway.h"
 
 int main(void) {
     Player* player = NULL;

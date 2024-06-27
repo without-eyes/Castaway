@@ -1,4 +1,4 @@
-#include "../include/castaway.h"
+#include "../../include/core/castaway.h"
 
 #include <malloc.h>
 

@@ -1,7 +1,7 @@
 #ifndef CASTAWAY_PLAYER_H
 #define CASTAWAY_PLAYER_H
 
-#include "position.h"
+#include "../attributes/position.h"
 
 typedef struct Player {
     Position position;

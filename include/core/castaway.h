@@ -2,7 +2,7 @@
 #define CASTAWAY_CASTAWAY_H
 
 #include <ncurses.h>
-#include "player.h"
+#include "../entities/player.h"
 
 void startGame(const Player* player);
 void initialiseScreen();

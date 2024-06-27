@@ -1,6 +1,6 @@
-#include "../include/player.h"
+#include "../../include/entities/player.h"
 
-#include "../include/castaway.h"
+#include "../../include/core/castaway.h"
 #include <malloc.h>
 
 Player* initialisePlayer() {
