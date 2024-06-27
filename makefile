@@ -1,10 +1,11 @@
 CC = gcc
 CFLAGS = -Wall -lmenu -lncurses -I$(IDIR) -g
 
-IDIR = ./inclued/
+IDIR = ./include/
 SRCDIR = ./src/
 
-SOURCES = ${SRCDIR}*.c
+SOURCES = ${SRCDIR}core/*.c\
+		  ${SRCDIR}entities/*.c\
 
 all: castaway run clean
 

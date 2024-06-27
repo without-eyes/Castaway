@@ -1,4 +1,5 @@
 #include "../../include/core/castaway.h"
+#include "../../include/entities/enemy.h"
 
 #include <malloc.h>
 
@@ -6,9 +7,14 @@ void startGame(const Player* player) {
     initialiseScreen();
     setMap();
     player = initialisePlayer();
+
+
+    Enemy* enemy = initialiseEnemy();
+
     unsigned char input;
     while ((input = getch()) != 'q') {
         handleInput(input, player);
+        goToPlayer(enemy, player);
     }
 }
 
