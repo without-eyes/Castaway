@@ -5,13 +5,13 @@
 
 Player* initialisePlayer() {
     Player * player = (Player*)malloc(sizeof(Player));
-    player->position.x = 0;
-    player->position.y = 0;
-    player->health = 100;
-    player->damage = 5;
+    player->attributes.position.y = 0;
+    player->attributes.position.x = 0;
+    player->attributes.health = 100;
+    player->attributes.damage = 5;
+    player->attributes.symbol = '@';
 
-    mvprintw(player->position.y, player->position.x, "@");
-    move(player->position.y, player->position.x);
+    mvprintw(player->attributes.position.y, player->attributes.position.x, "%c", player->attributes.symbol);
 
     return player;
 }
@@ -20,22 +20,22 @@ void handleInput(const unsigned char input, Player* player) {
     switch (input) {
         case 'W':
         case 'w':
-            movePlayer(player->position.y - 1, player->position.x, player);
+            moveEntity(player->attributes.position.y - 1, player->attributes.position.x, &player->attributes.position, player->attributes.symbol);
             break;
 
         case 'A':
         case 'a':
-            movePlayer(player->position.y, player->position.x - 1, player);
+            moveEntity(player->attributes.position.y, player->attributes.position.x - 1, &player->attributes.position, player->attributes.symbol);
             break;
 
         case 'S':
         case 's':
-            movePlayer(player->position.y + 1, player->position.x, player);
+            moveEntity(player->attributes.position.y + 1, player->attributes.position.x, &player->attributes.position, player->attributes.symbol);
             break;
 
         case 'D':
         case 'd':
-            movePlayer(player->position.y, player->position.x + 1, player);
+            moveEntity(player->attributes.position.y, player->attributes.position.x + 1, &player->attributes.position, player->attributes.symbol);
             break;
 
         default: break;
@@ -44,10 +44,10 @@ void handleInput(const unsigned char input, Player* player) {
 
 void movePlayer(const short y, const short x, Player* player) {
     if (mvinch(y, x) == '.') {
-        mvprintw(player->position.y, player->position.x, ".");
+        mvprintw(player->attributes.position.y, player->attributes.position.x, ".");
         mvprintw(y, x, "@");
         move(y, x);
-        player->position.y = y;
-        player->position.x = x;
+        player->attributes.position.y = y;
+        player->attributes.position.x = x;
     }
 }

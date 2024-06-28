@@ -1,12 +1,11 @@
 #ifndef CASTAWAY_PLAYER_H
 #define CASTAWAY_PLAYER_H
 
-#include "../attributes/position.h"
+#include "../core/movement.h"
+#include "attributes.h"
 
 typedef struct Player {
-    Position position;
-    short health;
-    short damage;
+    Attributes attributes;
 } Player;
 
 Player* initialisePlayer();

@@ -4,7 +4,7 @@
 #include <ncurses.h>
 #include "../entities/player.h"
 
-void startGame(const Player* player);
+void startGame(Player* player);
 void initialiseScreen();
 void setMap();
 void endGame(Player* player);

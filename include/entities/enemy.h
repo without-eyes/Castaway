@@ -1,13 +1,11 @@
 #ifndef CASTAWAY_ENEMY_H
 #define CASTAWAY_ENEMY_H
 
-#include "../attributes/position.h"
+#include "../core/movement.h"
 #include "../../include/entities/player.h"
 
 typedef struct Enemy {
-    Position position;
-    short health;
-    short damage;
+    Attributes attributes;
 } Enemy;
 
 Enemy* initialiseEnemy();

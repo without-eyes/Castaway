@@ -3,7 +3,7 @@
 
 #include <malloc.h>
 
-void startGame(const Player* player) {
+void startGame(Player* player) {
     initialiseScreen();
     setMap();
     player = initialisePlayer();

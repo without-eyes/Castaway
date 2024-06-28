@@ -1,40 +1,30 @@
 #include <malloc.h>
-#include <ncurses.h>
 #include "../../include/entities/enemy.h"
 
 Enemy* initialiseEnemy() {
     Enemy* enemy = (Enemy*)malloc(sizeof(Enemy));
 
-    enemy->position.x = 10;
-    enemy->position.y = 10;
-    enemy->health = 10;
-    enemy->health = 10;
+    enemy->attributes.position.x = 10;
+    enemy->attributes.position.y = 10;
+    enemy->attributes.health = 10;
+    enemy->attributes.health = 10;
+    enemy->attributes.symbol = 'E';
 
-    mvprintw(enemy->position.y, enemy->position.x, "E");
+    mvprintw(enemy->attributes.position.y, enemy->attributes.position.x, "%c", enemy->attributes.symbol);
 
     return enemy;
 }
 
 void goToPlayer(Enemy* enemy, Player* player) {
-    if (enemy->position.x < player->position.x) {
-        moveEnemy(enemy->position.y, enemy->position.x + 1, enemy);
-    } else if (enemy->position.x > player->position.x){
-        moveEnemy(enemy->position.y, enemy->position.x - 1, enemy);
+    if (enemy->attributes.position.x < player->attributes.position.x) {
+        moveEntity(enemy->attributes.position.y, enemy->attributes.position.x + 1, &enemy->attributes.position, enemy->attributes.symbol);
+    } else if (enemy->attributes.position.x > player->attributes.position.x){
+        moveEntity(enemy->attributes.position.y, enemy->attributes.position.x - 1, &enemy->attributes.position, enemy->attributes.symbol);
     }
 
-    if (enemy->position.y < player->position.y) {
-        moveEnemy(enemy->position.y + 1, enemy->position.x, enemy);
-    } else if (enemy->position.y > player->position.y){
-        moveEnemy(enemy->position.y - 1, enemy->position.x, enemy);
-    }
-}
-
-void moveEnemy(const short y, const short x, Enemy* enemy) {
-    if (mvinch(y, x) == '.') {
-        mvprintw(enemy->position.y, enemy->position.x, ".");
-        mvprintw(y, x, "E");
-        move(y, x);
-        enemy->position.y = y;
-        enemy->position.x = x;
+    if (enemy->attributes.position.y < player->attributes.position.y) {
+        moveEntity(enemy->attributes.position.y + 1, enemy->attributes.position.x, &enemy->attributes.position, enemy->attributes.symbol);
+    } else if (enemy->attributes.position.y > player->attributes.position.y){
+        moveEntity(enemy->attributes.position.y - 1, enemy->attributes.position.x, &enemy->attributes.position, enemy->attributes.symbol);
     }
 }
