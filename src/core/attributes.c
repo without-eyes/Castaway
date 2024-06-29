@@ -1,6 +1,6 @@
 #include "../../include/entities/attributes.h"
 
-Attributes initialiseEntity(Position position, short health, short damage, char symbol) {
+Attributes initializeEntity(Position position, short health, short damage, char symbol) {
     Attributes attributes;
 
     attributes.position = position;

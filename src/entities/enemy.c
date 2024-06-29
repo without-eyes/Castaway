@@ -4,7 +4,7 @@
 Enemy* initialiseEnemy() {
     Enemy* enemy = (Enemy*)malloc(sizeof(Enemy));
 
-    enemy->attributes = initialiseEntity((Position){10, 10}, 10, 10, 'E');
+    enemy->attributes = initializeEntity((Position){10, 10}, 10, 10, 'E');
 
     mvprintw(enemy->attributes.position.y, enemy->attributes.position.x, "%c", enemy->attributes.symbol);
 

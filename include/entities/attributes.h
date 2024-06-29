@@ -10,6 +10,6 @@ typedef struct Attributes {
     char symbol;
 } Attributes;
 
-Attributes initialiseEntity(Position position, short health, short damage, char symbol);
+Attributes initializeEntity(Position position, short health, short damage, char symbol);
 
 #endif //CASTAWAY_ATTRIBUTES_H

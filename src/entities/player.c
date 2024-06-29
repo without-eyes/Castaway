@@ -5,7 +5,7 @@
 
 Player* initialisePlayer() {
     Player * player = (Player*)malloc(sizeof(Player));
-    player->attributes = initialiseEntity((Position){0, 0}, 10, 10, '@');
+    player->attributes = initializeEntity((Position){0, 0}, 10, 10, '@');
 
     mvprintw(player->attributes.position.y, player->attributes.position.x, "%c", player->attributes.symbol);
 
@@ -35,15 +35,5 @@ void handleInput(const unsigned char input, Player* player) {
             break;
 
         default: break;
-    }
-}
-
-void movePlayer(const short y, const short x, Player* player) {
-    if (mvinch(y, x) == '.') {
-        mvprintw(player->attributes.position.y, player->attributes.position.x, ".");
-        mvprintw(y, x, "@");
-        move(y, x);
-        player->attributes.position.y = y;
-        player->attributes.position.x = x;
     }
 }

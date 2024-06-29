@@ -1,20 +1,25 @@
 #include "../../include/core/castaway.h"
 #include "../../include/entities/enemy.h"
+#include "../../include/entities/passive.h"
 
 #include <malloc.h>
+#include <stdlib.h>
+#include <time.h>
 
 void startGame(Player* player) {
     initialiseScreen();
     setMap();
+    srand(time(NULL));
+
     player = initialisePlayer();
-
-
-    Enemy* enemy = initialiseEnemy();
+    //Enemy* enemy = initialiseEnemy();
+    Passive* cow = initialisePassive();
 
     unsigned char input;
     while ((input = getch()) != 'q') {
         handleInput(input, player);
-        goToPlayer(enemy, player);
+        //goToPlayer(enemy, player);
+        randomMovement(cow);
     }
 }
 
