@@ -5,11 +5,7 @@
 
 Player* initialisePlayer() {
     Player * player = (Player*)malloc(sizeof(Player));
-    player->attributes.position.y = 0;
-    player->attributes.position.x = 0;
-    player->attributes.health = 100;
-    player->attributes.damage = 5;
-    player->attributes.symbol = '@';
+    player->attributes = initialiseEntity((Position){0, 0}, 10, 10, '@');
 
     mvprintw(player->attributes.position.y, player->attributes.position.x, "%c", player->attributes.symbol);
 

@@ -4,8 +4,8 @@
 #include <ncurses.h>
 
 typedef struct Position {
-    short x;
     short y;
+    short x;
 } Position;
 
 void moveEntity(short y, short x, Position* entityPosition, char entitySymbol);
