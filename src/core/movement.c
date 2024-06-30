@@ -1,6 +1,6 @@
 #include "../../include/core/movement.h"
 
-void moveEntity(const short y, const short x, Position* entityPosition, const char entitySymbol) {
+void moveEntity(const short y, const short x, Position *entityPosition, const char entitySymbol) {
     if (mvinch(y, x) == '.') {
         mvprintw(entityPosition->y, entityPosition->x, ".");
         mvprintw(y, x, "%c", entitySymbol);

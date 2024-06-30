@@ -2,18 +2,17 @@
 #include "../../include/entities/enemy.h"
 #include "../../include/entities/passive.h"
 
-#include <malloc.h>
 #include <stdlib.h>
 #include <time.h>
 
-void startGame(Player* player) {
+void startGame() {
     initialiseScreen();
     setMap();
     srand(time(NULL));
 
-    player = initialisePlayer();
+    Player *player = initialisePlayer();
     //Enemy* enemy = initialiseEnemy();
-    Passive* cow = initialisePassive();
+    Passive *cow = initialisePassive();
 
     unsigned char input;
     while ((input = getch()) != 'q') {
@@ -21,6 +20,14 @@ void startGame(Player* player) {
         //goToPlayer(enemy, player);
         randomMovement(cow);
     }
+
+    free(player);
+    player = NULL;
+    //free(enemy);
+    //enemy = NULL:
+    free(cow);
+    cow = NULL;
+
 }
 
 void initialiseScreen() {
@@ -37,7 +44,6 @@ void setMap() {
     }
 }
 
-void endGame(Player* player) {
+void endGame() {
     endwin();
-    free(player);
 }

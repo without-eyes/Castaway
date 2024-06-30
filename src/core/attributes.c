@@ -5,7 +5,7 @@ Attributes initializeEntity(Position position, short health, short damage, char 
 
     attributes.position = position;
     attributes.health = health;
-    attributes. damage = damage;
+    attributes.damage = damage;
     attributes.symbol = symbol;
 
     return attributes;

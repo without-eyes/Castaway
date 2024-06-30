@@ -8,6 +8,6 @@ typedef struct Position {
     short x;
 } Position;
 
-void moveEntity(short y, short x, Position* entityPosition, char entitySymbol);
+void moveEntity(short y, short x, Position *entityPosition, char entitySymbol);
 
 #endif //CASTAWAY_MOVEMENT_H

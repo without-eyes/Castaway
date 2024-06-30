@@ -8,9 +8,13 @@ SOURCES = ${SRCDIR}core/*.c\
 		  ${SRCDIR}entities/*.c\
 
 all: castaway run clean
+check: castaway valgrind clean
 
 castaway:
 	${CC} ${SOURCES} ${CFLAGS} -o $@
+
+valgrind:
+	valgrind --leak-check=full --show-leak-kinds=all ./castaway
 
 run:
 	./castaway

@@ -2,5 +2,4 @@
 #define CASTAWAY_UTILS_H
 
 
-
 #endif //CASTAWAY_UTILS_H

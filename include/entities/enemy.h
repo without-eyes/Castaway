@@ -8,8 +8,10 @@ typedef struct Enemy {
     Attributes attributes;
 } Enemy;
 
-Enemy* initialiseEnemy();
-void goToPlayer(Enemy* enemy, Player* player);
-void moveEnemy(const short y, const short x, Enemy* enemy);
+Enemy *initialiseEnemy();
+
+void goToPlayer(Enemy *enemy, Player *player);
+
+void moveEnemy(const short y, const short x, Enemy *enemy);
 
 #endif //CASTAWAY_ENEMY_H

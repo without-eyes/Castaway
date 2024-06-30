@@ -8,8 +8,10 @@ typedef struct Player {
     Attributes attributes;
 } Player;
 
-Player* initialisePlayer();
-void handleInput(unsigned char input, Player* player);
-void movePlayer(short y, short x, Player* player);
+Player *initialisePlayer();
+
+void handleInput(unsigned char input, Player *player);
+
+void movePlayer(short y, short x, Player *player);
 
 #endif //CASTAWAY_PLAYER_H

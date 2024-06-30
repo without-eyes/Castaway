@@ -7,7 +7,8 @@ typedef struct Passive {
     Attributes attributes;
 } Passive;
 
-Passive* initialisePassive();
-void randomMovement(Passive* passive);
+Passive *initialisePassive();
+
+void randomMovement(Passive *passive);
 
 #endif //CASTAWAY_PASSIVE_H
