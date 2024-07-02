@@ -1,15 +1,16 @@
 #ifndef CASTAWAY_ATTRIBUTES_H
 #define CASTAWAY_ATTRIBUTES_H
 
-#include "../core/movement.h"
+#include "position.h"
 
 typedef struct Attributes {
     Position position;
-    short health;
-    short damage;
+    int health;
+    int damage;
     char symbol;
 } Attributes;
 
-Attributes initializeEntity(Position position, short health, short damage, char symbol);
+Attributes initializeEntity(Position position, int health, int damage, char symbol);
+
 
 #endif //CASTAWAY_ATTRIBUTES_H

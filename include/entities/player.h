@@ -1,17 +1,17 @@
 #ifndef CASTAWAY_PLAYER_H
 #define CASTAWAY_PLAYER_H
 
-#include "../core/movement.h"
-#include "attributes.h"
+#include "../core/position.h"
+#include "../core/attributes.h"
 
 typedef struct Player {
     Attributes attributes;
 } Player;
 
-Player *initialisePlayer();
+Player *initialisePlayer(Position position);
 
-void handleInput(unsigned char input, Player *player);
+void handleInput(char input, Player *player);
 
-void movePlayer(short y, short x, Player *player);
+void movePlayer(int y, int x, Player *player);
 
 #endif //CASTAWAY_PLAYER_H

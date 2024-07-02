@@ -1,9 +1,9 @@
 #include <stdlib.h>
 #include "../../include/entities/passive.h"
 
-Passive *initialisePassive() {
+Passive *initialisePassive(Position position, int health, int damage, char symbol) {
     Passive *passive = (Passive *) malloc(sizeof(Passive));
-    passive->attributes = initializeEntity((Position) {15, 10}, 10, 10, 'C');
+    passive->attributes = initializeEntity(position, health, damage, symbol);
 
     mvprintw(passive->attributes.position.y, passive->attributes.position.x, "%c", passive->attributes.symbol);
 

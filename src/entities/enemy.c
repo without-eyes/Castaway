@@ -1,10 +1,10 @@
 #include <malloc.h>
 #include "../../include/entities/enemy.h"
 
-Enemy *initialiseEnemy() {
+Enemy *initialiseEnemy(Position position, int health, int damage, char symbol) {
     Enemy *enemy = (Enemy *) malloc(sizeof(Enemy));
 
-    enemy->attributes = initializeEntity((Position) {10, 10}, 10, 10, 'E');
+    enemy->attributes = initializeEntity(position, health, damage, symbol);
 
     mvprintw(enemy->attributes.position.y, enemy->attributes.position.x, "%c", enemy->attributes.symbol);
 

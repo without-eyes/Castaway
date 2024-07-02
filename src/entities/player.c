@@ -3,16 +3,16 @@
 #include "../../include/core/castaway.h"
 #include <malloc.h>
 
-Player *initialisePlayer() {
+Player *initialisePlayer(Position position) {
     Player *player = (Player *) malloc(sizeof(Player));
-    player->attributes = initializeEntity((Position) {0, 0}, 10, 10, '@');
+    player->attributes = initializeEntity(position, 10, 10, '@');
 
     mvprintw(player->attributes.position.y, player->attributes.position.x, "%c", player->attributes.symbol);
 
     return player;
 }
 
-void handleInput(const unsigned char input, Player *player) {
+void handleInput(const char input, Player *player) {
     switch (input) {
         case 'W':
         case 'w':

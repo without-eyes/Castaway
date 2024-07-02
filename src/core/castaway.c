@@ -10,24 +10,44 @@ void startGame() {
     setMap();
     srand(time(NULL));
 
-    Player *player = initialisePlayer();
-    //Enemy* enemy = initialiseEnemy();
-    Passive *cow = initialisePassive();
+    Player *player = initialisePlayer(getRandomPosition());
 
-    unsigned char input;
+    const int enemyCount = rand() % 3;
+    Enemy* enemyArray[enemyCount];
+    for (int i = 0; i < enemyCount; i++) {
+        Enemy* enemy = initialiseEnemy(getRandomPosition(), 10, 10, 'E');
+        enemyArray[i] = enemy;
+    }
+
+    const int passiveCount = rand() % 3;
+    Passive* passiveArray[passiveCount];
+    for (int i = 0; i < passiveCount; i++) {
+        Passive *passive = initialisePassive(getRandomPosition(), 10, 10, 'P');
+        passiveArray[i] = passive;
+    }
+
+    char input;
     while ((input = getch()) != 'q') {
         handleInput(input, player);
-        //goToPlayer(enemy, player);
-        randomMovement(cow);
+        for (int i = 0; i < enemyCount; i++) {
+            goToPlayer(enemyArray[i], player);
+        }
+        for (int i = 0; i < passiveCount; i++) {
+            randomMovement(passiveArray[i]);
+        }
+
     }
 
     free(player);
     player = NULL;
-    //free(enemy);
-    //enemy = NULL:
-    free(cow);
-    cow = NULL;
-
+    for (int i = 0; i < enemyCount; i++) {
+        free(enemyArray[i]);
+        enemyArray[i] = NULL;
+    }
+    for (int i = 0; i < passiveCount; i++) {
+        free(passiveArray[i]);
+        passiveArray[i] = NULL;
+    }
 }
 
 void initialiseScreen() {
@@ -37,8 +57,8 @@ void initialiseScreen() {
 }
 
 void setMap() {
-    for (unsigned char i = 0; i < 40; i++) {
-        for (unsigned char j = 0; j < 70; j++) {
+    for (int i = 0; i < 40; i++) {
+        for (int j = 0; j < 70; j++) {
             mvprintw(i, j, ".");
         }
     }
