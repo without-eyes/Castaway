@@ -1,5 +1,6 @@
 #include <malloc.h>
 #include "../../include/entities/enemy.h"
+#include "../../include/core/movement.h"
 
 Enemy *initialiseEnemy(Position position, int health, int damage, char symbol) {
     Enemy *enemy = (Enemy *) malloc(sizeof(Enemy));

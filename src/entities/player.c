@@ -1,6 +1,7 @@
 #include "../../include/entities/player.h"
 
 #include "../../include/core/castaway.h"
+#include "../../include/core/movement.h"
 #include <malloc.h>
 
 Player* initialisePlayer(Position position) {

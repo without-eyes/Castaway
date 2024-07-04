@@ -1,8 +1,10 @@
 #include <stdlib.h>
 #include "../../include/entities/passive.h"
+#include "../../include/core/movement.h"
 
 Passive *initialisePassive(Position position, int health, int damage, char symbol) {
     Passive *passive = (Passive *) malloc(sizeof(Passive));
+
     passive->attributes = initializeEntity(position, health, damage, symbol);
 
     mvprintw(passive->attributes.position.y, passive->attributes.position.x, "%c", passive->attributes.symbol);

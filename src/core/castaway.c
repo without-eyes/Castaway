@@ -1,5 +1,6 @@
 #include "../../include/core/castaway.h"
 #include "../../include/entities/entities.h"
+#include "../../include/core/movement.h"
 
 #include <stdlib.h>
 #include <time.h>
@@ -16,26 +17,19 @@ void startGame() {
 
     Player* player = NULL;
     const int enemyCount = rand() % 3;
-    Enemy* enemyArray[enemyCount];
+    Enemy** enemyArray = NULL;
     const int passiveCount = rand() % 3;
-    Passive* passiveArray[passiveCount];
-    initializeEntities(&player, enemyArray, enemyCount, passiveArray, passiveCount);
+    Passive** passiveArray = NULL;
+    initializeEntities(&player, &enemyArray, enemyCount, &passiveArray, passiveCount);
 
     char input;
     while ((input = getch()) != 'q') {
         handleInput(input, player);
 
-        for (int i = 0; i < enemyCount; i++) {
-            goToPlayer(enemyArray[i], player);
-        }
-
-        for (int i = 0; i < passiveCount; i++) {
-            randomMovement(passiveArray[i]);
-        }
-
+        moveAllEntities(player, enemyArray, enemyCount, passiveArray, passiveCount);
     }
 
-    freeEntities(&player, enemyArray, enemyCount, passiveArray, passiveCount);
+    freeEntities(player, enemyArray, enemyCount, passiveArray, passiveCount);
 }
 
 void initializeScreen() {

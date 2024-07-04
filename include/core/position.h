@@ -8,8 +8,6 @@ typedef struct {
     int x;
 } Position;
 
-void moveEntity(int y, int x, Position *entityPosition, char entitySymbol);
-
 Position getRandomPosition();
 
 #endif //CASTAWAY_POSITION_H
