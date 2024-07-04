@@ -4,7 +4,7 @@
 #include "../core/position.h"
 #include "../../include/entities/player.h"
 
-typedef struct Enemy {
+typedef struct {
     Attributes attributes;
 } Enemy;
 

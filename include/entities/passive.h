@@ -3,7 +3,7 @@
 
 #include "../core/attributes.h"
 
-typedef struct Passive {
+typedef struct {
     Attributes attributes;
 } Passive;
 

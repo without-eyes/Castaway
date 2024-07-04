@@ -1,56 +1,44 @@
 #include "../../include/core/castaway.h"
-#include "../../include/entities/enemy.h"
-#include "../../include/entities/passive.h"
+#include "../../include/entities/entities.h"
 
 #include <stdlib.h>
 #include <time.h>
 
+void runGame() {
+    startGame();
+    endGame();
+}
+
 void startGame() {
-    initialiseScreen();
+    initializeScreen();
     setMap();
     srand(time(NULL));
 
-    Player *player = initialisePlayer(getRandomPosition());
-
+    Player* player = NULL;
     const int enemyCount = rand() % 3;
     Enemy* enemyArray[enemyCount];
-    for (int i = 0; i < enemyCount; i++) {
-        Enemy* enemy = initialiseEnemy(getRandomPosition(), 10, 10, 'E');
-        enemyArray[i] = enemy;
-    }
-
     const int passiveCount = rand() % 3;
     Passive* passiveArray[passiveCount];
-    for (int i = 0; i < passiveCount; i++) {
-        Passive *passive = initialisePassive(getRandomPosition(), 10, 10, 'P');
-        passiveArray[i] = passive;
-    }
+    initializeEntities(&player, enemyArray, enemyCount, passiveArray, passiveCount);
 
     char input;
     while ((input = getch()) != 'q') {
         handleInput(input, player);
+
         for (int i = 0; i < enemyCount; i++) {
             goToPlayer(enemyArray[i], player);
         }
+
         for (int i = 0; i < passiveCount; i++) {
             randomMovement(passiveArray[i]);
         }
 
     }
 
-    free(player);
-    player = NULL;
-    for (int i = 0; i < enemyCount; i++) {
-        free(enemyArray[i]);
-        enemyArray[i] = NULL;
-    }
-    for (int i = 0; i < passiveCount; i++) {
-        free(passiveArray[i]);
-        passiveArray[i] = NULL;
-    }
+    freeEntities(&player, enemyArray, enemyCount, passiveArray, passiveCount);
 }
 
-void initialiseScreen() {
+void initializeScreen() {
     initscr();
     noecho();
     keypad(stdscr, TRUE);

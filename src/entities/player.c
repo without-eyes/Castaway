@@ -3,7 +3,7 @@
 #include "../../include/core/castaway.h"
 #include <malloc.h>
 
-Player *initialisePlayer(Position position) {
+Player* initialisePlayer(Position position) {
     Player *player = (Player *) malloc(sizeof(Player));
     player->attributes = initializeEntity(position, 10, 10, '@');
 

@@ -3,7 +3,7 @@
 
 #include "position.h"
 
-typedef struct Attributes {
+typedef struct {
     Position position;
     int health;
     int damage;

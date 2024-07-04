@@ -3,7 +3,7 @@
 
 #include <ncurses.h>
 
-typedef struct Position {
+typedef struct {
     int y;
     int x;
 } Position;

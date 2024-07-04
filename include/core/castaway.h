@@ -2,11 +2,12 @@
 #define CASTAWAY_CASTAWAY_H
 
 #include <ncurses.h>
-#include "../entities/player.h"
+
+void runGame();
 
 void startGame();
 
-void initialiseScreen();
+void initializeScreen();
 
 void setMap();
 
