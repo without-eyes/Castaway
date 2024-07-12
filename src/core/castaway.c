@@ -15,11 +15,11 @@ void startGame() {
     setMap();
     srand(time(NULL));
 
-    Player* player = NULL;
+    Player *player = NULL;
     const int enemyCount = rand() % 3;
-    Enemy** enemyArray = NULL;
+    Enemy **enemyArray = NULL;
     const int passiveCount = rand() % 3;
-    Passive** passiveArray = NULL;
+    Passive **passiveArray = NULL;
     initializeEntities(&player, &enemyArray, enemyCount, &passiveArray, passiveCount);
 
     char input;
@@ -29,7 +29,7 @@ void startGame() {
         moveAllEntities(player, enemyArray, enemyCount, passiveArray, passiveCount);
     }
 
-    freeEntities(player, enemyArray, enemyCount, passiveArray, passiveCount);
+    freeEntities(&player, &enemyArray, enemyCount, &passiveArray, passiveCount);
 }
 
 void initializeScreen() {

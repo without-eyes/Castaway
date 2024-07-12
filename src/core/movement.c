@@ -12,7 +12,7 @@ void moveEntity(const int y, const int x, Position *entityPosition, const char e
     }
 }
 
-void moveAllEntities(Player* player, Enemy** enemyArray, int enemyCount, Passive** passiveArray, int passiveCount) {
+void moveAllEntities(Player *player, Enemy **enemyArray, int enemyCount, Passive **passiveArray, int passiveCount) {
     for (int i = 0; i < enemyCount; i++) {
         goToPlayer(enemyArray[i], player);
     }

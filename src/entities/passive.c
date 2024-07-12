@@ -1,6 +1,6 @@
-#include <stdlib.h>
 #include "../../include/entities/passive.h"
 #include "../../include/core/movement.h"
+#include <stdlib.h>
 
 Passive *initialisePassive(Position position, int health, int damage, char symbol) {
     Passive *passive = (Passive *) malloc(sizeof(Passive));

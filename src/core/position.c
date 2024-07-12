@@ -8,5 +8,5 @@ Position getRandomPosition() {
         y = rand() % 40;
         x = rand() % 70;
     } while (mvinch(y, x) != '.');
-    return (Position){y, x};
+    return (Position) {y, x};
 };

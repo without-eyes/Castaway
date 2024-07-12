@@ -8,6 +8,6 @@
 
 void moveEntity(int y, int x, Position *entityPosition, char entitySymbol);
 
-void moveAllEntities(Player* player, Enemy** enemyArray, int enemyCount, Passive** passiveArray, int passiveCount);
+void moveAllEntities(Player *player, Enemy **enemyArray, int enemyCount, Passive **passiveArray, int passiveCount);
 
 #endif //CASTAWAY_MOVEMENT_H
