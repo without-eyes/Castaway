@@ -2,7 +2,7 @@
 #define CASTAWAY_ENEMY_H
 
 #include "../core/position.h"
-#include "../../include/entities/player.h"
+#include "../core/attributes.h"
 
 typedef struct {
     Attributes attributes;
@@ -10,7 +10,7 @@ typedef struct {
 
 Enemy *initialiseEnemy(Position position, int health, int damage, char symbol);
 
-void goToPlayer(Enemy *enemy, Player *player);
+void goToPlayer(Enemy *enemy, Position playerPosition);
 
 void moveEnemy(int y, int x, Enemy *enemy);
 

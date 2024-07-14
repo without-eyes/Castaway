@@ -7,6 +7,7 @@ Attributes initializeEntity(Position position, int health, int damage, char symb
     attributes.health = health;
     attributes.damage = damage;
     attributes.symbol = symbol;
+    attributes.isAlive = true;
 
     return attributes;
 }

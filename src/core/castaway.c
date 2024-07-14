@@ -16,17 +16,19 @@ void startGame() {
     srand(time(NULL));
 
     Player *player = NULL;
-    const int enemyCount = rand() % 3;
+    int enemyCount = rand() % 3;
     Enemy **enemyArray = NULL;
-    const int passiveCount = rand() % 3;
+    int passiveCount = rand() % 3;
     Passive **passiveArray = NULL;
     initializeEntities(&player, &enemyArray, enemyCount, &passiveArray, passiveCount);
 
     char input;
-    while ((input = getch()) != 'q') {
-        handleInput(input, player);
+    while ((input = getch()) != 'q' && player->attributes.isAlive) {
+        handleInput(input, player, enemyArray, enemyCount, passiveArray, passiveCount);
 
         moveAllEntities(player, enemyArray, enemyCount, passiveArray, passiveCount);
+
+        // remove dead
     }
 
     freeEntities(&player, &enemyArray, enemyCount, &passiveArray, passiveCount);

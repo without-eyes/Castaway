@@ -22,20 +22,23 @@ Test(initializeEntities, basic, .init = setup, .fini = teardown) {
 
     initializeEntities(&player, &enemyArray, enemyCount, &passiveArray, passiveCount);
 
-    cr_assert_eq(player->attributes.health, 10);
-    cr_assert_eq(player->attributes.damage, 10);
+    cr_assert_eq(player->attributes.health, 20);
+    cr_assert_eq(player->attributes.damage, 2);
     cr_assert_eq(player->attributes.symbol, '@');
+    cr_assert_eq(player->attributes.isAlive, true);
     cr_assert_eq(mvinch(player->attributes.position.y, player->attributes.position.x), player->attributes.symbol);
 
-    cr_assert_eq(enemyArray[0]->attributes.health, 10);
-    cr_assert_eq(enemyArray[0]->attributes.damage, 10);
+    cr_assert_eq(enemyArray[0]->attributes.health, 15);
+    cr_assert_eq(enemyArray[0]->attributes.damage, 2);
     cr_assert_eq(enemyArray[0]->attributes.symbol, 'E');
+    cr_assert_eq(enemyArray[0]->attributes.isAlive, true);
     cr_assert_eq(mvinch(enemyArray[0]->attributes.position.y, enemyArray[0]->attributes.position.x),
                  enemyArray[0]->attributes.symbol);
 
     cr_assert_eq(passiveArray[0]->attributes.health, 10);
-    cr_assert_eq(passiveArray[0]->attributes.damage, 10);
+    cr_assert_eq(passiveArray[0]->attributes.damage, 0);
     cr_assert_eq(passiveArray[0]->attributes.symbol, 'P');
+    cr_assert_eq(passiveArray[0]->attributes.isAlive, true);
     cr_assert_eq(mvinch(passiveArray[0]->attributes.position.y, passiveArray[0]->attributes.position.x),
                  passiveArray[0]->attributes.symbol);
 }
@@ -45,9 +48,10 @@ Test(createPlayer, basic, .init = setup, .fini = teardown) {
 
     createPlayer(&player);
 
-    cr_assert_eq(player->attributes.health, 10);
-    cr_assert_eq(player->attributes.damage, 10);
+    cr_assert_eq(player->attributes.health, 20);
+    cr_assert_eq(player->attributes.damage, 2);
     cr_assert_eq(player->attributes.symbol, '@');
+    cr_assert_eq(player->attributes.isAlive, true);
     cr_assert_eq(mvinch(player->attributes.position.y, player->attributes.position.x), player->attributes.symbol);
 }
 
@@ -57,9 +61,10 @@ Test(createEnemies, basic, .init = setup, .fini = teardown) {
 
     createEnemies(&enemyArray, enemyCount);
 
-    cr_assert_eq(enemyArray[0]->attributes.health, 10);
-    cr_assert_eq(enemyArray[0]->attributes.damage, 10);
+    cr_assert_eq(enemyArray[0]->attributes.health, 15);
+    cr_assert_eq(enemyArray[0]->attributes.damage, 2);
     cr_assert_eq(enemyArray[0]->attributes.symbol, 'E');
+    cr_assert_eq(enemyArray[0]->attributes.isAlive, true);
     cr_assert_eq(mvinch(enemyArray[0]->attributes.position.y, enemyArray[0]->attributes.position.x),
                  enemyArray[0]->attributes.symbol);
 }
@@ -71,8 +76,9 @@ Test(createPassive, basic, .init = setup, .fini = teardown) {
     createPassive(&passiveArray, passiveCount);
 
     cr_assert_eq(passiveArray[0]->attributes.health, 10);
-    cr_assert_eq(passiveArray[0]->attributes.damage, 10);
+    cr_assert_eq(passiveArray[0]->attributes.damage, 0);
     cr_assert_eq(passiveArray[0]->attributes.symbol, 'P');
+    cr_assert_eq(passiveArray[0]->attributes.isAlive, true);
     cr_assert_eq(mvinch(passiveArray[0]->attributes.position.y, passiveArray[0]->attributes.position.x),
                  passiveArray[0]->attributes.symbol);
 }

@@ -14,10 +14,14 @@ void moveEntity(const int y, const int x, Position *entityPosition, const char e
 
 void moveAllEntities(Player *player, Enemy **enemyArray, int enemyCount, Passive **passiveArray, int passiveCount) {
     for (int i = 0; i < enemyCount; i++) {
-        goToPlayer(enemyArray[i], player);
+        if (enemyArray[i]->attributes.isAlive) {
+            goToPlayer(enemyArray[i], player->attributes.position);
+        }
     }
 
     for (int i = 0; i < passiveCount; i++) {
-        randomMovement(passiveArray[i]);
+        if (passiveArray[i]->attributes.isAlive) {
+            randomMovement(passiveArray[i]);
+        }
     }
 }

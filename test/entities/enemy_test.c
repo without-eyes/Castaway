@@ -26,6 +26,7 @@ Test(initialiseEnemy, basic, .init = setup, .fini = teardown) {
     cr_assert_eq(enemy->attributes.health, health);
     cr_assert_eq(enemy->attributes.damage, damage);
     cr_assert_eq(enemy->attributes.symbol, symbol);
+    cr_assert_eq(enemy->attributes.isAlive, true);
     cr_assert_eq(mvinch(enemy->attributes.position.y, enemy->attributes.position.x), symbol);
 
     free(enemy);
@@ -36,7 +37,7 @@ Test(goToPlayer, basic, .init = setup, .fini = teardown) {
     Player *player = initialisePlayer((Position) {0, 2});
     Enemy *enemy = initialiseEnemy((Position) {0, 0}, 0, 0, 'E');
 
-    goToPlayer(enemy, player);
+    goToPlayer(enemy, player->attributes.position);
 
     cr_assert_eq(enemy->attributes.position.y, 0);
     cr_assert_eq(enemy->attributes.position.x, 1);

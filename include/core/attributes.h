@@ -8,6 +8,7 @@ typedef struct {
     int health;
     int damage;
     char symbol;
+    bool isAlive;
 } Attributes;
 
 Attributes initializeEntity(Position position, int health, int damage, char symbol);

@@ -16,14 +16,14 @@ void createPlayer(Player **player) {
 void createEnemies(Enemy ***enemyArray, const int enemyCount) {
     *enemyArray = (Enemy **) malloc(enemyCount * sizeof(Enemy *));
     for (int i = 0; i < enemyCount; i++) {
-        (*enemyArray)[i] = initialiseEnemy(getRandomPosition(), 10, 10, 'E');
+        (*enemyArray)[i] = initialiseEnemy(getRandomPosition(), 15, 2, 'E');
     }
 }
 
 void createPassive(Passive ***passiveArray, const int passiveCount) {
     *passiveArray = (Passive **) malloc(passiveCount * sizeof(Passive *));
     for (int i = 0; i < passiveCount; i++) {
-        (*passiveArray)[i] = initialisePassive(getRandomPosition(), 10, 10, 'P');
+        (*passiveArray)[i] = initialisePassive(getRandomPosition(), 10, 0, 'P');
     }
 }
 

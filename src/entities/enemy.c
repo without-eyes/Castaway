@@ -12,19 +12,19 @@ Enemy *initialiseEnemy(Position position, int health, int damage, char symbol) {
     return enemy;
 }
 
-void goToPlayer(Enemy *enemy, Player *player) {
-    if (enemy->attributes.position.x < player->attributes.position.x) {
+void goToPlayer(Enemy *enemy, Position playerPosition) {
+    if (enemy->attributes.position.x < playerPosition.x) {
         moveEntity(enemy->attributes.position.y, enemy->attributes.position.x + 1, &enemy->attributes.position,
                    enemy->attributes.symbol);
-    } else if (enemy->attributes.position.x > player->attributes.position.x) {
+    } else if (enemy->attributes.position.x > playerPosition.x) {
         moveEntity(enemy->attributes.position.y, enemy->attributes.position.x - 1, &enemy->attributes.position,
                    enemy->attributes.symbol);
     }
 
-    if (enemy->attributes.position.y < player->attributes.position.y) {
+    if (enemy->attributes.position.y < playerPosition.y) {
         moveEntity(enemy->attributes.position.y + 1, enemy->attributes.position.x, &enemy->attributes.position,
                    enemy->attributes.symbol);
-    } else if (enemy->attributes.position.y > player->attributes.position.y) {
+    } else if (enemy->attributes.position.y > playerPosition.y) {
         moveEntity(enemy->attributes.position.y - 1, enemy->attributes.position.x, &enemy->attributes.position,
                    enemy->attributes.symbol);
     }

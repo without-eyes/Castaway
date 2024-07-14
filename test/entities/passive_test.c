@@ -25,6 +25,7 @@ Test(initialisePassive, basic, .init = setup, .fini = teardown) {
     cr_assert_eq(passive->attributes.health, health);
     cr_assert_eq(passive->attributes.damage, damage);
     cr_assert_eq(passive->attributes.symbol, symbol);
+    cr_assert_eq(passive->attributes.isAlive, true);
     cr_assert_eq(mvinch(passive->attributes.position.y, passive->attributes.position.x), symbol);
 
     free(passive);
