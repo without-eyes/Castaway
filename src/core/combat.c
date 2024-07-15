@@ -1,40 +1,39 @@
 #include "../../include/core/combat.h"
+#include <stdlib.h>
 
-void combatEnemy(Player* player, Enemy* enemy, bool playerTurn) {
+void attack(const Attributes *attackerAttributes, Attributes *defenderAttributes) {
+    defenderAttributes->health -= attackerAttributes->damage;
+    if (defenderAttributes->health <= 0) {
+        defenderAttributes->isAlive = false;
+    }
+}
+
+void combatEnemy(const Player *player, const Enemy *enemy, const bool playerTurn) {
     if (playerTurn) {
-        enemy->attributes.health -= player->attributes.damage;
-        if (enemy->attributes.health <= 0) {
-            enemy->attributes.isAlive = false;
-        }
+        attack(&player->attributes, &enemy->attributes);
     } else {
-        player->attributes.health -= enemy->attributes.damage;
-        if (player->attributes.health <= 0) {
-            player->attributes.isAlive = false;
-        }
+        attack(&enemy->attributes, &player->attributes);
     }
 }
 
-void combatPassive(Player* player, Passive* passive) {
-    passive->attributes.health -= player->attributes.damage;
-    if (passive->attributes.health <= 0) {
-        passive->attributes.isAlive = false;
-    }
+void combatPassive(const Player *player, const Passive *passive) {
+    attack(&player->attributes, &passive->attributes);
 }
 
-Enemy* findAttackedEnemy(Enemy **enemyArray, int enemyCount, int y, int x) {
+Enemy *findAttackedEnemy(const Position position, const Enemy **enemyArray, const int enemyCount) {
     for (int i = 0; i < enemyCount; i++) {
-        if (enemyArray[i]->attributes.position.y == y &&
-            enemyArray[i]->attributes.position.x == x) {
+        if (enemyArray[i]->attributes.position.y == position.y &&
+            enemyArray[i]->attributes.position.x == position.x) {
             return enemyArray[i];
         }
     }
     return NULL;
 }
 
-Passive* findAttackedPassive(Passive **passiveArray, int passiveCount, int y, int x) {
+Passive *findAttackedPassive(const Position position, const Passive **passiveArray, const int passiveCount) {
     for (int i = 0; i < passiveCount; i++) {
-        if (passiveArray[i]->attributes.position.y == y &&
-                passiveArray[i]->attributes.position.x == x) {
+        if (passiveArray[i]->attributes.position.y == position.y &&
+            passiveArray[i]->attributes.position.x == position.x) {
             return passiveArray[i];
         }
     }

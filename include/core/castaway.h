@@ -1,7 +1,7 @@
 #ifndef CASTAWAY_CASTAWAY_H
 #define CASTAWAY_CASTAWAY_H
 
-#include <ncurses.h>
+#include "../entities/entities.h"
 
 void runGame();
 
@@ -10,6 +10,8 @@ void startGame();
 void initializeScreen();
 
 void setMap();
+
+void gameLoop(const Entities *entities);
 
 void endGame();
 

@@ -1,6 +1,7 @@
 #ifndef CASTAWAY_ATTRIBUTES_H
 #define CASTAWAY_ATTRIBUTES_H
 
+#include <stdbool.h>
 #include "position.h"
 
 typedef struct {

@@ -1,12 +1,13 @@
-#include <stdlib.h>
 #include "../../include/core/position.h"
+#include "../../include/core/macros.h"
+#include <ncurses.h>
+#include <stdlib.h>
 
 Position getRandomPosition() {
-    int y;
-    int x;
+    Position position;
     do {
-        y = rand() % 40;
-        x = rand() % 70;
-    } while (mvinch(y, x) != '.');
-    return (Position) {y, x};
+        position.y = rand() % MAP_HEIGHT;
+        position.x = rand() % MAP_WIDTH;
+    } while (mvinch(position.y, position.x) != TEST_TILE_SYMBOL);
+    return position;
 };

@@ -5,12 +5,14 @@
 #include "../entities/passive.h"
 #include "../entities/player.h"
 
-void combatEnemy(Player* player, Enemy* enemy, bool playerTurn);
+void attack(const Attributes *attackerAttributes, Attributes *defenderAttributes);
 
-void combatPassive(Player* player, Passive* passive);
+void combatEnemy(const Player *player, const Enemy *enemy, bool playerTurn);
 
-Enemy* findAttackedEnemy(Enemy **enemyArray, int enemyCount, int y, int x);
+void combatPassive(const Player *player, const Passive *passive);
 
-Passive* findAttackedPassive(Passive **passiveArray, int passiveCount, int y, int x);
+Enemy *findAttackedEnemy(Position position, const Enemy **enemyArray, int enemyCount);
+
+Passive *findAttackedPassive(Position position, const Passive **passiveArray, int passiveCount);
 
 #endif //CASTAWAY_COMBAT_H

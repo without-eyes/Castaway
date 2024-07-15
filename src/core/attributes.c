@@ -1,6 +1,6 @@
 #include "../../include/core/attributes.h"
 
-Attributes initializeEntity(Position position, int health, int damage, char symbol) {
+Attributes initializeEntity(const Position position, const int health, const int damage, const char symbol) {
     Attributes attributes;
 
     attributes.position = position;
