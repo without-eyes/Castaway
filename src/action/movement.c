@@ -1,4 +1,4 @@
-#include "../../include/core/movement.h"
+#include "../../include/action/movement.h"
 #include "../../include/core/macros.h"
 #include <ncurses.h>
 
@@ -14,7 +14,7 @@ void moveEntity(const Position newPosition, Position *entityPosition, const char
 void moveAllEntities(Entities *entities) {
     for (int i = 0; i < entities->enemyCount; i++) {
         if (entities->enemyArray[i]->attributes.isAlive) {
-            goToPlayer(entities->enemyArray[i], entities->player->attributes.position);
+            goToPlayer(entities->enemyArray[i], entities->player->position);
         }
     }
 

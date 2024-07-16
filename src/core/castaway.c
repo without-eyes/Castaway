@@ -1,6 +1,6 @@
 #include "../../include/core/castaway.h"
-#include "../../include/core/movement.h"
-#include "../../include/core/input.h"
+#include "../../include/action/movement.h"
+#include "../../include/action/input.h"
 #include "../../include/core/macros.h"
 
 #include <ncurses.h>

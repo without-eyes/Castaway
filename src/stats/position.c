@@ -1,4 +1,4 @@
-#include "../../include/core/position.h"
+#include "../../include/stats/position.h"
 #include "../../include/core/macros.h"
 #include <ncurses.h>
 #include <stdlib.h>

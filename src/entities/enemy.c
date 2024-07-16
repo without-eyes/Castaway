@@ -1,33 +1,34 @@
 #include "../../include/entities/enemy.h"
-#include "../../include/core/movement.h"
+#include "../../include/action/movement.h"
 #include <ncurses.h>
 #include <malloc.h>
 
 Enemy *initialiseEnemy(const Position position, const int health, const int damage, const char symbol) {
     Enemy *enemy = (Enemy *) malloc(sizeof(Enemy));
 
-    enemy->attributes = initializeEntity(position, health, damage, symbol);
+    enemy->position = position;
+    enemy->attributes = initializeEntity(health, damage, symbol);
 
-    mvprintw(enemy->attributes.position.y, enemy->attributes.position.x, "%c", enemy->attributes.symbol);
+    mvprintw(enemy->position.y, enemy->position.x, "%c", enemy->attributes.symbol);
 
     return enemy;
 }
 
 void goToPlayer(Enemy *enemy, const Position playerPosition) {
     Position newPosition;
-    if (enemy->attributes.position.x < playerPosition.x) {
-        newPosition = (Position) {enemy->attributes.position.y, enemy->attributes.position.x + 1};
-        moveEntity(newPosition, &enemy->attributes.position, enemy->attributes.symbol);
-    } else if (enemy->attributes.position.x > playerPosition.x) {
-        newPosition = (Position) {enemy->attributes.position.y, enemy->attributes.position.x - 1};
-        moveEntity(newPosition, &enemy->attributes.position, enemy->attributes.symbol);
+    if (enemy->position.x < playerPosition.x) {
+        newPosition = (Position) {enemy->position.y, enemy->position.x + 1};
+        moveEntity(newPosition, &enemy->position, enemy->attributes.symbol);
+    } else if (enemy->position.x > playerPosition.x) {
+        newPosition = (Position) {enemy->position.y, enemy->position.x - 1};
+        moveEntity(newPosition, &enemy->position, enemy->attributes.symbol);
     }
 
-    if (enemy->attributes.position.y < playerPosition.y) {
-        newPosition = (Position) {enemy->attributes.position.y + 1, enemy->attributes.position.x};
-        moveEntity(newPosition, &enemy->attributes.position, enemy->attributes.symbol);
-    } else if (enemy->attributes.position.y > playerPosition.y) {
-        newPosition = (Position) {enemy->attributes.position.y - 1, enemy->attributes.position.x};
-        moveEntity(newPosition, &enemy->attributes.position, enemy->attributes.symbol);
+    if (enemy->position.y < playerPosition.y) {
+        newPosition = (Position) {enemy->position.y + 1, enemy->position.x};
+        moveEntity(newPosition, &enemy->position, enemy->attributes.symbol);
+    } else if (enemy->position.y > playerPosition.y) {
+        newPosition = (Position) {enemy->position.y - 1, enemy->position.x};
+        moveEntity(newPosition, &enemy->position, enemy->attributes.symbol);
     }
 }

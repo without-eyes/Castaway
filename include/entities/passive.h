@@ -1,9 +1,10 @@
 #ifndef CASTAWAY_PASSIVE_H
 #define CASTAWAY_PASSIVE_H
 
-#include "../core/attributes.h"
+#include "../stats/attributes.h"
 
 typedef struct {
+    Position position;
     Attributes attributes;
 } Passive;
 

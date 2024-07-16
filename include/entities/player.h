@@ -1,9 +1,10 @@
 #ifndef CASTAWAY_PLAYER_H
 #define CASTAWAY_PLAYER_H
 
-#include "../core/attributes.h"
+#include "../stats/attributes.h"
 
 typedef struct {
+    Position position;
     Attributes attributes;
 } Player;
 

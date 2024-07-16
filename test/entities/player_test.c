@@ -1,6 +1,6 @@
 #include "../../include/entities/player.h"
 #include "../../include/core/castaway.h"
-#include "../../include/core/movement.h"
+#include "../../include/action/movement.h"
 #include <malloc.h>
 #include <criterion/criterion.h>
 

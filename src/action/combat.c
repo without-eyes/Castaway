@@ -1,4 +1,4 @@
-#include "../../include/core/combat.h"
+#include "../../include/action/combat.h"
 #include <stdlib.h>
 
 void attack(const Attributes *attackerAttributes, Attributes *defenderAttributes) {
@@ -22,8 +22,8 @@ void combatPassive(const Player *player, const Passive *passive) {
 
 Enemy *findAttackedEnemy(const Position position, const Enemy **enemyArray, const int enemyCount) {
     for (int i = 0; i < enemyCount; i++) {
-        if (enemyArray[i]->attributes.position.y == position.y &&
-            enemyArray[i]->attributes.position.x == position.x) {
+        if (enemyArray[i]->position.y == position.y &&
+            enemyArray[i]->position.x == position.x) {
             return enemyArray[i];
         }
     }
@@ -32,8 +32,8 @@ Enemy *findAttackedEnemy(const Position position, const Enemy **enemyArray, cons
 
 Passive *findAttackedPassive(const Position position, const Passive **passiveArray, const int passiveCount) {
     for (int i = 0; i < passiveCount; i++) {
-        if (passiveArray[i]->attributes.position.y == position.y &&
-            passiveArray[i]->attributes.position.x == position.x) {
+        if (passiveArray[i]->position.y == position.y &&
+            passiveArray[i]->position.x == position.x) {
             return passiveArray[i];
         }
     }

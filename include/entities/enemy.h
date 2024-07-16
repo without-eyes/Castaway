@@ -1,10 +1,11 @@
 #ifndef CASTAWAY_ENEMY_H
 #define CASTAWAY_ENEMY_H
 
-#include "../core/position.h"
-#include "../core/attributes.h"
+#include "../stats/position.h"
+#include "../stats/attributes.h"
 
 typedef struct {
+    Position position;
     Attributes attributes;
 } Enemy;
 

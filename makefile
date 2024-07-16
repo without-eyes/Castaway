@@ -10,8 +10,10 @@ SRCDIR = ./src/
 TESTDIR = ./test/
 
 # Source and test files
-SOURCES = $(wildcard ${SRCDIR}core/*.c) \
-          $(wildcard ${SRCDIR}entities/*.c)
+SOURCES = $(wildcard ${SRCDIR}action/*.c) \
+		  $(wildcard ${SRCDIR}core/*.c) \
+          $(wildcard ${SRCDIR}entities/*.c) \
+          $(wildcard ${SRCDIR}stats/*.c)
 
 TESTS = $(filter-out ${SRCDIR}core/main.c, \
          $(wildcard ${SRCDIR}core/*.c) \

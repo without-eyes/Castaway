@@ -1,4 +1,4 @@
-#include "../../include/core/attributes.h"
+#include "../../include/stats/attributes.h"
 #include <criterion/criterion.h>
 
 Test(initializeEntity, basic) {

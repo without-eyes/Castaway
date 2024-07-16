@@ -6,9 +6,10 @@
 Player *initialisePlayer(const Position position) {
     Player *player = (Player *) malloc(sizeof(Player));
 
-    player->attributes = initializeEntity(position, 20, 2, PLAYER_SYMBOL);
+    player->position = position;
+    player->attributes = initializeEntity(20, 2, PLAYER_SYMBOL);
 
-    mvprintw(player->attributes.position.y, player->attributes.position.x, "%c", player->attributes.symbol);
+    mvprintw(player->position.y, player->position.x, "%c", player->attributes.symbol);
 
     return player;
 }
