@@ -3,6 +3,7 @@
 #include "../../include/core/castaway.h"
 #include <criterion/criterion.h>
 #include <malloc.h>
+#include <ncurses.h>
 
 static void setup() {
     initializeScreen();
@@ -21,24 +22,26 @@ Test(initialiseEnemy, basic, .init = setup, .fini = teardown) {
 
     Enemy *enemy = initialiseEnemy(position, health, damage, symbol);
 
-    cr_assert_eq(enemy->attributes.position.y, position.y);
-    cr_assert_eq(enemy->attributes.position.x, position.x);
+    cr_assert_eq(enemy->position.y, position.y);
+    cr_assert_eq(enemy->position.x, position.x);
     cr_assert_eq(enemy->attributes.health, health);
     cr_assert_eq(enemy->attributes.damage, damage);
     cr_assert_eq(enemy->attributes.symbol, symbol);
     cr_assert_eq(enemy->attributes.isAlive, true);
-    cr_assert_eq(mvinch(enemy->attributes.position.y, enemy->attributes.position.x), symbol);
+    cr_assert_eq(mvinch(enemy->position.y, enemy->position.x), symbol);
 
-    free(enemy);
-    enemy = NULL;
+    freeEnemy(&enemy);
 }
 
 Test(goToPlayer, basic, .init = setup, .fini = teardown) {
     Player *player = initialisePlayer((Position) {0, 2});
     Enemy *enemy = initialiseEnemy((Position) {0, 0}, 0, 0, 'E');
 
-    goToPlayer(enemy, player->attributes.position);
+    goToPlayer(enemy, player->position);
 
-    cr_assert_eq(enemy->attributes.position.y, 0);
-    cr_assert_eq(enemy->attributes.position.x, 1);
+    cr_assert_eq(enemy->position.y, 0);
+    cr_assert_eq(enemy->position.x, 1);
+
+    freePlayer(&player);
+    freeEnemy(&enemy);
 }

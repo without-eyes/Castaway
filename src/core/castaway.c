@@ -39,7 +39,7 @@ void setMap() {
     }
 }
 
-void gameLoop(const Entities *entities) {
+void gameLoop(Entities *entities) {
     char input;
     while ((input = getch()) != 'q' && entities->player->attributes.isAlive) {
         handlePlayerInput(input, entities);

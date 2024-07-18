@@ -16,22 +16,23 @@ SOURCES = $(wildcard ${SRCDIR}action/*.c) \
           $(wildcard ${SRCDIR}stats/*.c)
 
 TESTS = $(filter-out ${SRCDIR}core/main.c, \
-         $(wildcard ${SRCDIR}core/*.c) \
-         $(wildcard ${SRCDIR}entities/*.c) \
-         $(wildcard ${TESTDIR}core/*.c) \
-         $(wildcard ${TESTDIR}entities/*.c))
+        $(SOURCES) \
+        $(wildcard ${TESTDIR}action/*.c) \
+        $(wildcard ${TESTDIR}entities/*.c) \
+        $(wildcard ${TESTDIR}stats/*.c))
 
 # Targets
 .PHONY: all memory fullmemory test coverage allclean clean cleantest cleancoverage
 .SILENT: all memory fullmemory test coverage allclean
 
 # Main targets
-all: castaway run clean
+all: clean castaway run clean
 memory: clean castaway simplecheck clean
 fullmemory: clean castaway fullcheck clean
 test: cleantest criterion cleantest
 coverage: clean cleancoverage criterion gcovr clean
 allclean: clean cleancoverage cleantest
+debug: clean castaway gdb clean
 
 # Rules
 castaway:
@@ -48,6 +49,9 @@ criterion:
 
 gcovr:
 	gcovr --html-details -o ./test/coverage/coverage.html
+
+gdb:
+	gdb ./castaway
 
 run:
 	./castaway

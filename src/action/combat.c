@@ -8,7 +8,7 @@ void attack(const Attributes *attackerAttributes, Attributes *defenderAttributes
     }
 }
 
-void combatEnemy(const Player *player, const Enemy *enemy, const bool playerTurn) {
+void combatEnemy(Player *player, Enemy *enemy, const bool playerTurn) {
     if (playerTurn) {
         attack(&player->attributes, &enemy->attributes);
     } else {
@@ -16,11 +16,11 @@ void combatEnemy(const Player *player, const Enemy *enemy, const bool playerTurn
     }
 }
 
-void combatPassive(const Player *player, const Passive *passive) {
+void combatPassive(const Player *player, Passive *passive) {
     attack(&player->attributes, &passive->attributes);
 }
 
-Enemy *findAttackedEnemy(const Position position, const Enemy **enemyArray, const int enemyCount) {
+Enemy *findAttackedEnemy(const Position position, Enemy **enemyArray, const int enemyCount) {
     for (int i = 0; i < enemyCount; i++) {
         if (enemyArray[i]->position.y == position.y &&
             enemyArray[i]->position.x == position.x) {
@@ -30,7 +30,7 @@ Enemy *findAttackedEnemy(const Position position, const Enemy **enemyArray, cons
     return NULL;
 }
 
-Passive *findAttackedPassive(const Position position, const Passive **passiveArray, const int passiveCount) {
+Passive *findAttackedPassive(const Position position, Passive **passiveArray, const int passiveCount) {
     for (int i = 0; i < passiveCount; i++) {
         if (passiveArray[i]->position.y == position.y &&
             passiveArray[i]->position.x == position.x) {

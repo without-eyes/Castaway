@@ -1,6 +1,5 @@
 #include "../../include/action/movement.h"
 #include "../../include/core/castaway.h"
-#include "../../include/entities/entities.h"
 #include <criterion/criterion.h>
 
 static void setup() {
@@ -13,14 +12,13 @@ static void teardown() {
 }
 
 Test(moveEntity, basic, .init = setup, .fini = teardown) {
-    const int y = 1;
-    const int x = 1;
-    Position position = {0, 0};
+    const Position newPosition = {1, 1};
+    Position entityPosition = {0, 0};
     const char symbol = 'T';
 
-    moveEntity(y, x, &position, symbol);
-    cr_assert_eq(position.y, y);
-    cr_assert_eq(position.x, x);
+    moveEntity(newPosition, &entityPosition, symbol);
+    cr_assert_eq(entityPosition.y, newPosition.y);
+    cr_assert_eq(entityPosition.x, newPosition.x);
 }
 
 Test(moveAllEntities, basic, .init = setup, .fini = teardown) {

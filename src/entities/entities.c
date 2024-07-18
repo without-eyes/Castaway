@@ -2,6 +2,7 @@
 #include "../../include/core/macros.h"
 #include <malloc.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 void initializeEntities(Entities **entities) {
     *entities = (Entities *) malloc(sizeof(Entities));
@@ -38,9 +39,11 @@ void createPassive(Passive ***passiveArray, int *passiveCount) {
 }
 
 void freeEntities(Entities **entities) {
+    if (*entities == NULL) return;
+
     freePlayer(&((*entities)->player));
     freeEnemies(&((*entities)->enemyArray), (*entities)->enemyCount);
-    freePassive(&((*entities)->passiveArray), (*entities)->passiveCount);
+    freePassives(&((*entities)->passiveArray), (*entities)->passiveCount);
     free(*entities);
     *entities = NULL;
 }
@@ -56,24 +59,36 @@ void freeEnemies(Enemy ***enemyArray, const int enemyCount) {
     if (*enemyArray) {
         for (int i = 0; i < enemyCount; i++) {
             if ((*enemyArray)[i]) {
-                free((*enemyArray)[i]);
-                (*enemyArray)[i] = NULL;
+                freeEnemy(&(*enemyArray)[i]);
             }
         }
         free(*enemyArray);
-        (*enemyArray) = NULL;
+        *enemyArray = NULL;
     }
 }
 
-void freePassive(Passive ***passiveArray, const int passiveCount) {
+void freeEnemy(Enemy **enemy) {
+    if (*enemy) {
+        free(*enemy);
+        *enemy = NULL;
+    }
+}
+
+void freePassives(Passive ***passiveArray, const int passiveCount) {
     if (*passiveArray) {
         for (int i = 0; i < passiveCount; i++) {
             if ((*passiveArray)[i]) {
-                free((*passiveArray)[i]);
-                (*passiveArray)[i] = NULL;
+                freePassive(&(*passiveArray)[i]);
             }
         }
         free(*passiveArray);
-        (*passiveArray) = NULL;
+        *passiveArray = NULL;
+    }
+}
+
+void freePassive(Passive **passive) {
+    if (*passive) {
+        free(*passive);
+        *passive = NULL;
     }
 }

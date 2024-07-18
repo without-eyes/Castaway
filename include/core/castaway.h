@@ -11,7 +11,7 @@ void initializeScreen();
 
 void setMap();
 
-void gameLoop(const Entities *entities);
+void gameLoop(Entities *entities);
 
 void endGame();
 

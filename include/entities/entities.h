@@ -27,6 +27,10 @@ void freePlayer(Player **player);
 
 void freeEnemies(Enemy ***enemyArray, int enemyCount);
 
-void freePassive(Passive ***passiveArray, int passiveCount);
+void freeEnemy(Enemy** enemy);
+
+void freePassives(Passive ***passiveArray, int passiveCount);
+
+void freePassive(Passive** passive);
 
 #endif //CASTAWAY_ENTITIES_H
