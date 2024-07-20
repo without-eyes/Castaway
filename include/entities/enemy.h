@@ -9,7 +9,7 @@ typedef struct {
     Attributes attributes;
 } Enemy;
 
-Enemy *initialiseEnemy(Position position, int health, int damage, char symbol);
+Enemy *initializeEnemy(Position position, int health, int damage, char symbol);
 
 void goToPlayer(Enemy *enemy, Position playerPosition);
 

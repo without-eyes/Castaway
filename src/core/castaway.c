@@ -15,8 +15,8 @@ void runGame() {
 void startGame() {
     initializeScreen();
     setMap();
-    srand(time(NULL));
 
+    srand(time(NULL));
     Entities *entities = NULL;
     initializeEntities(&entities);
 
@@ -42,7 +42,7 @@ void setMap() {
 void gameLoop(Entities *entities) {
     char input;
     while ((input = getch()) != 'q' && entities->player->attributes.isAlive) {
-        handlePlayerInput(input, entities);
+        handleInput(input, entities);
 
         moveAllEntities(entities);
 

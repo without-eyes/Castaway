@@ -23,3 +23,12 @@ Test(getRandomPosition, basic, .init = setup, .fini = teardown) {
     cr_assert_geq(position.x, 0);
     cr_assert_leq(position.x, MAP_WIDTH);
 }
+
+Test(arePositionEquals, basic) {
+    Position position1 = {0, 0};
+    Position position2 = {0, 0};
+
+    bool result = arePositionsEqual(position1, position2);
+
+    cr_assert_eq(result, true);
+}

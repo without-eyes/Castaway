@@ -14,13 +14,13 @@ static void teardown() {
     endGame();
 }
 
-Test(initialiseEnemy, basic, .init = setup, .fini = teardown) {
+Test(initializeEnemy, basic, .init = setup, .fini = teardown) {
     const Position position = {0, 0};
     const int health = 0;
     const int damage = 0;
     const char symbol = 'E';
 
-    Enemy *enemy = initialiseEnemy(position, health, damage, symbol);
+    Enemy *enemy = initializeEnemy(position, health, damage, symbol);
 
     cr_assert_eq(enemy->position.y, position.y);
     cr_assert_eq(enemy->position.x, position.x);
@@ -34,8 +34,8 @@ Test(initialiseEnemy, basic, .init = setup, .fini = teardown) {
 }
 
 Test(goToPlayer, basic, .init = setup, .fini = teardown) {
-    Player *player = initialisePlayer((Position) {0, 2});
-    Enemy *enemy = initialiseEnemy((Position) {0, 0}, 0, 0, 'E');
+    Player *player = initializePlayer((Position) {0, 2});
+    Enemy *enemy = initializeEnemy((Position) {0, 0}, 0, 0, 'E');
 
     goToPlayer(enemy, player->position);
 

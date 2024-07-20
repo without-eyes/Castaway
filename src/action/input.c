@@ -4,7 +4,7 @@
 #include "../../include/core/macros.h"
 #include <ncurses.h>
 
-void handlePlayerInput(const char input, Entities *entities) {
+void handleInput(const char input, Entities *entities) {
     Position position;
     switch (input) {
         case 'W':

@@ -22,8 +22,8 @@ Test(attack, basic, .init = setup, .fini = teardown) {
 }
 
 Test(combatEnemy, basic, .init = setup, .fini = teardown) {
-    Player* player = initialisePlayer((Position){0, 0});
-    Enemy* enemy = initialiseEnemy((Position){0, 1}, 10, 0, 'E');
+    Player* player = initializePlayer((Position){0, 0});
+    Enemy* enemy = initializeEnemy((Position){0, 1}, 10, 0, 'E');
 
     combatEnemy(player, enemy, true);
 
@@ -34,8 +34,8 @@ Test(combatEnemy, basic, .init = setup, .fini = teardown) {
 }
 
 Test(combatPassive, basic, .init = setup, .fini = teardown) {
-    Player* player = initialisePlayer((Position){0, 0});
-    Passive* passive = initialisePassive((Position){0, 1}, 10, 0, 'P');
+    Player* player = initializePlayer((Position){0, 0});
+    Passive* passive = initializePassive((Position){0, 1}, 10, 0, 'P');
 
     combatPassive(player, passive);
 
@@ -48,7 +48,7 @@ Test(combatPassive, basic, .init = setup, .fini = teardown) {
 Test(findAttackedEnemy, basic, .init = setup, .fini = teardown) {
     const int enemyCount = 1;
     Enemy **enemyArray = (Enemy**)malloc(enemyCount * sizeof(Enemy*));
-    enemyArray[0] = initialiseEnemy((Position){0, 1}, 10, 0, 'E');
+    enemyArray[0] = initializeEnemy((Position){0, 1}, 10, 0, 'E');
 
     Enemy* attackedEnemy = findAttackedEnemy((Position){0, 1}, enemyArray, enemyCount);
 
@@ -66,7 +66,7 @@ Test(findAttackedEnemy, basic, .init = setup, .fini = teardown) {
 Test(findAttackedPassive, basic, .init = setup, .fini = teardown) {
     const int passiveCount = 1;
     Passive **passiveArray = (Passive**)malloc(passiveCount * sizeof(Passive*));
-    passiveArray[0] = initialisePassive((Position){0, 1}, 10, 0, 'P');
+    passiveArray[0] = initializePassive((Position){0, 1}, 10, 0, 'P');
 
     Passive* attackedPassive = findAttackedPassive((Position){0, 1}, passiveArray, passiveCount);
 

@@ -3,7 +3,7 @@
 #include <malloc.h>
 #include <ncurses.h>
 
-Player *initialisePlayer(const Position position) {
+Player *initializePlayer(const Position position) {
     Player *player = (Player *) malloc(sizeof(Player));
 
     player->position = position;

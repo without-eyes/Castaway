@@ -3,7 +3,7 @@
 
 #include "../entities/entities.h"
 
-void handlePlayerInput(char input, Entities *entities);
+void handleInput(const char input, Entities *entities);
 
 void action(Position newPosition, Entities *entities);
 

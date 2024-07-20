@@ -12,13 +12,13 @@ static void teardown() {
     endGame();
 }
 
-Test(initialisePlayer, basic, .init = setup, .fini = teardown) {
+Test(initializePlayer, basic, .init = setup, .fini = teardown) {
     const Position position = {0, 0};
     const int health = 20;
     const int damage = 2;
     const char symbol = '@';
 
-    Player *player = initialisePlayer(position);
+    Player *player = initializePlayer(position);
 
     cr_assert_eq(player->position.y, position.y);
     cr_assert_eq(player->position.x, position.x);

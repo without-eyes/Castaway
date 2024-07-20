@@ -20,7 +20,7 @@ void moveAllEntities(Entities *entities) {
 
     for (int i = 0; i < entities->passiveCount; i++) {
         if (entities->passiveArray[i]->attributes.isAlive) {
-            randomMovement(entities->passiveArray[i]);
+            idleAndMove(entities->passiveArray[i]);
         }
     }
 }

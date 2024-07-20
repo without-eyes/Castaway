@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <ncurses.h>
 
-Passive *initialisePassive(const Position position, const int health, const int damage, const char symbol) {
+Passive *initializePassive(const Position position, const int health, const int damage, const char symbol) {
     Passive *passive = (Passive *) malloc(sizeof(Passive));
 
     passive->position = position;
@@ -15,37 +15,41 @@ Passive *initialisePassive(const Position position, const int health, const int 
     return passive;
 }
 
-void randomMovement(Passive *passive) {
+void idleAndMove(Passive *passive) {
     static int idleTime = 0;
-    if (idleTime == TEST_PASSIVE_IDLE_TIME) {
+    if (idleTime >= TEST_PASSIVE_IDLE_TIME) {
         idleTime = 0;
-        Position newPosition;
-        unsigned char direction = rand() % 4;
-        switch (direction) {
-            case 0:
-                newPosition = (Position) {passive->position.y + 1, passive->position.x};
-                moveEntity(newPosition, &passive->position, passive->attributes.symbol);
-                break;
-
-            case 1:
-                newPosition = (Position) {passive->position.y - 1, passive->position.x};
-                moveEntity(newPosition, &passive->position, passive->attributes.symbol);
-                break;
-
-            case 2:
-                newPosition = (Position) {passive->position.y, passive->position.x + 1};
-                moveEntity(newPosition, &passive->position, passive->attributes.symbol);
-                break;
-
-            case 3:
-                newPosition = (Position) {passive->position.y, passive->position.x - 1};
-                moveEntity(newPosition, &passive->position, passive->attributes.symbol);
-                break;
-
-            default:
-                break;
-        }
+        randomMovement(passive);
     } else {
-        idleTime++;
+        idleTime += rand() % 4;
+    }
+}
+
+void randomMovement(Passive *passive) {
+    Position newPosition;
+    unsigned char direction = rand() % 4;
+    switch (direction) {
+        case 0:
+            newPosition = (Position) {passive->position.y + 1, passive->position.x};
+            moveEntity(newPosition, &passive->position, passive->attributes.symbol);
+            break;
+
+        case 1:
+            newPosition = (Position) {passive->position.y - 1, passive->position.x};
+            moveEntity(newPosition, &passive->position, passive->attributes.symbol);
+            break;
+
+        case 2:
+            newPosition = (Position) {passive->position.y, passive->position.x + 1};
+            moveEntity(newPosition, &passive->position, passive->attributes.symbol);
+            break;
+
+        case 3:
+            newPosition = (Position) {passive->position.y, passive->position.x - 1};
+            moveEntity(newPosition, &passive->position, passive->attributes.symbol);
+            break;
+
+        default:
+            break;
     }
 }

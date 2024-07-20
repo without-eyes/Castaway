@@ -10,4 +10,8 @@ Position getRandomPosition() {
         position.x = rand() % MAP_WIDTH;
     } while (mvinch(position.y, position.x) != TEST_TILE_SYMBOL);
     return position;
-};
+}
+
+bool arePositionsEqual(Position first, Position second) {
+    return first.y == second.y && first.x == second.x;
+}

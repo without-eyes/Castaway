@@ -19,14 +19,14 @@ void initializeEntities(Entities **entities) {
 }
 
 void createPlayer(Player **player) {
-    *player = initialisePlayer(getRandomPosition());
+    *player = initializePlayer(getRandomPosition());
 }
 
 void createEnemies(Enemy ***enemyArray, int *enemyCount) {
     *enemyCount = rand() % (TEST_ENEMY_MAX_COUNT - TEST_ENEMY_MIN_COUNT) + TEST_ENEMY_MIN_COUNT;
     *enemyArray = (Enemy **) malloc(*enemyCount * sizeof(Enemy *));
     for (int i = 0; i < *enemyCount; i++) {
-        (*enemyArray)[i] = initialiseEnemy(getRandomPosition(), 15, 2, TEST_ENEMY_SYMBOL);
+        (*enemyArray)[i] = initializeEnemy(getRandomPosition(), 15, 2, TEST_ENEMY_SYMBOL);
     }
 }
 
@@ -34,12 +34,14 @@ void createPassive(Passive ***passiveArray, int *passiveCount) {
     *passiveCount = rand() % (TEST_PASSIVE_MAX_COUNT - TEST_PASSIVE_MIN_COUNT) + TEST_PASSIVE_MIN_COUNT;
     *passiveArray = (Passive **) malloc(*passiveCount * sizeof(Passive *));
     for (int i = 0; i < *passiveCount; i++) {
-        (*passiveArray)[i] = initialisePassive(getRandomPosition(), 10, 0, TEST_PASSIVE_SYMBOL);
+        (*passiveArray)[i] = initializePassive(getRandomPosition(), 10, 0, TEST_PASSIVE_SYMBOL);
     }
 }
 
 void freeEntities(Entities **entities) {
-    if (*entities == NULL) return;
+    if (*entities == NULL) {
+        return;
+    }
 
     freePlayer(&((*entities)->player));
     freeEnemies(&((*entities)->enemyArray), (*entities)->enemyCount);

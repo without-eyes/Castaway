@@ -104,7 +104,7 @@ Test(freeEntities, basic, .init = setup, .fini = teardown) {
 }
 
 Test(freePlayer, basic, .init = setup, .fini = teardown) {
-    Player* player = initialisePlayer(getRandomPosition());
+    Player* player = initializePlayer(getRandomPosition());
 
     freePlayer(&player);
 
@@ -122,7 +122,7 @@ Test(freeEnemies, basic, .init = setup, .fini = teardown) {
 }
 
 Test(freeEnemy, basic, .init = setup, .fini = teardown) {
-    Enemy* enemy = initialiseEnemy((Position){0, 0}, 1, 1, 'E');
+    Enemy* enemy = initializeEnemy((Position){0, 0}, 1, 1, 'E');
 
     freeEnemy(&enemy);
 
@@ -140,7 +140,7 @@ Test(freePassives, basic, .init = setup, .fini = teardown) {
 }
 
 Test(freePassive, basic, .init = setup, .fini = teardown) {
-    Passive* passive = initialisePassive((Position){0, 0}, 1, 1, 'P');
+    Passive* passive = initializePassive((Position){0, 0}, 1, 1, 'P');
 
     freePassive(&passive);
 

@@ -3,7 +3,7 @@
 #include <ncurses.h>
 #include <malloc.h>
 
-Enemy *initialiseEnemy(const Position position, const int health, const int damage, const char symbol) {
+Enemy *initializeEnemy(const Position position, const int health, const int damage, const char symbol) {
     Enemy *enemy = (Enemy *) malloc(sizeof(Enemy));
 
     enemy->position = position;

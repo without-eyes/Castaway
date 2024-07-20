@@ -8,7 +8,9 @@ typedef struct {
     Attributes attributes;
 } Passive;
 
-Passive *initialisePassive(Position position, int health, int damage, char symbol);
+Passive *initializePassive(Position position, int health, int damage, char symbol);
+
+void idleAndMove(Passive *passive);
 
 void randomMovement(Passive *passive);
 

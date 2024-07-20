@@ -8,6 +8,6 @@ typedef struct {
     Attributes attributes;
 } Player;
 
-Player *initialisePlayer(Position position);
+Player *initializePlayer(Position position);
 
 #endif //CASTAWAY_PLAYER_H

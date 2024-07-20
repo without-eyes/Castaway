@@ -12,13 +12,13 @@ static void teardown() {
     endGame();
 }
 
-Test(initialisePassive, basic, .init = setup, .fini = teardown) {
+Test(initializePassive, basic, .init = setup, .fini = teardown) {
     const Position position = {0, 0};
     const int health = 0;
     const int damage = 0;
     const char symbol = 'P';
 
-    Passive *passive = initialisePassive(position, health, damage, symbol);
+    Passive *passive = initializePassive(position, health, damage, symbol);
 
     cr_assert_eq(passive->position.y, position.y);
     cr_assert_eq(passive->position.x, position.x);
