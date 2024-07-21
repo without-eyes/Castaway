@@ -10,17 +10,3 @@ void moveEntity(const Position newPosition, Position *entityPosition, const char
         entityPosition->x = newPosition.x;
     }
 }
-
-void moveAllEntities(Entities *entities) {
-    for (int i = 0; i < entities->enemyCount; i++) {
-        if (entities->enemyArray[i]->attributes.isAlive) {
-            goToPlayer(entities->enemyArray[i], entities->player->position);
-        }
-    }
-
-    for (int i = 0; i < entities->passiveCount; i++) {
-        if (entities->passiveArray[i]->attributes.isAlive) {
-            idleAndMove(entities->passiveArray[i]);
-        }
-    }
-}

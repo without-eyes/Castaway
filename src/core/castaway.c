@@ -1,7 +1,7 @@
 #include "../../include/core/castaway.h"
-#include "../../include/action/movement.h"
 #include "../../include/action/input.h"
 #include "../../include/core/macros.h"
+#include "../../include/action/action.h"
 
 #include <ncurses.h>
 #include <stdlib.h>
@@ -44,9 +44,20 @@ void gameLoop(Entities *entities) {
     while ((input = getch()) != 'q' && entities->player->attributes.isAlive) {
         handleInput(input, entities);
 
-        moveAllEntities(entities);
+        actionEntities(entities);
 
-        // remove dead
+        playerDeathSituation(entities->player);
+
+        removeDeadEntities(&entities);
+    }
+}
+
+void playerDeathSituation(const Player* player) {
+    if (!player->attributes.isAlive) {
+        clear();
+        mvprintw(1, 1, "YOU ARE DEAD!");
+        mvprintw(5, 1, "Press any button to continue...");
+        getch();
     }
 }
 

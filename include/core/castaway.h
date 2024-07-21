@@ -13,6 +13,8 @@ void setMap();
 
 void gameLoop(Entities *entities);
 
+void playerDeathSituation(const Player* player);
+
 void endGame();
 
 #endif //CASTAWAY_CASTAWAY_H

@@ -26,13 +26,13 @@ TESTS = $(filter-out ${SRCDIR}core/main.c, \
 .SILENT: all memory fullmemory test coverage allclean
 
 # Main targets
-all: clean castaway run clean
-memory: clean castaway simplecheck clean
-fullmemory: clean castaway fullcheck clean
-test: cleantest criterion cleantest
-coverage: clean cleancoverage criterion gcovr clean
-allclean: clean cleancoverage cleantest
-debug: clean castaway gdb clean
+all: castaway run clean
+memory: castaway simplecheck clean
+fullmemory: castaway fullcheck clean
+test: criterion cleantest
+coverage: cleancoverage criterion gcovr clean
+allclean: cleancoverage cleantest
+debug: castaway gdb clean
 
 # Rules
 castaway:

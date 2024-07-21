@@ -12,4 +12,6 @@ Position getRandomPosition();
 
 bool arePositionsEqual(Position first, Position second);
 
+bool areEntitiesBeside(Position first, Position second);
+
 #endif //CASTAWAY_POSITION_H

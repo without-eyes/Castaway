@@ -13,3 +13,14 @@ Player *initializePlayer(const Position position) {
 
     return player;
 }
+
+void createPlayer(Player **player) {
+    *player = initializePlayer(getRandomPosition());
+}
+
+void freePlayer(Player **player) {
+    if (*player) {
+        free(*player);
+        *player = NULL;
+    }
+}

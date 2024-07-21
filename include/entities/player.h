@@ -10,4 +10,8 @@ typedef struct {
 
 Player *initializePlayer(Position position);
 
+void createPlayer(Player **player);
+
+void freePlayer(Player **player);
+
 #endif //CASTAWAY_PLAYER_H

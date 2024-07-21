@@ -15,3 +15,7 @@ Position getRandomPosition() {
 bool arePositionsEqual(Position first, Position second) {
     return first.y == second.y && first.x == second.x;
 }
+
+bool areEntitiesBeside(const Position first, const Position second) {
+    return (abs(first.y - second.y) + abs(first.x - second.x)) == 1;
+}

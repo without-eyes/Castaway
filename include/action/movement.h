@@ -6,6 +6,4 @@
 
 void moveEntity(Position newPosition, Position *entityPosition, char entitySymbol);
 
-void moveAllEntities(Entities *entities);
-
 #endif //CASTAWAY_MOVEMENT_H

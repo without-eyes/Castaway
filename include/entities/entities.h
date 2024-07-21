@@ -15,22 +15,8 @@ typedef struct {
 
 void initializeEntities(Entities **entities);
 
-void createPlayer(Player **player);
-
-void createEnemies(Enemy ***enemyArray, int *enemyCount);
-
-void createPassive(Passive ***passiveArray, int *passiveCount);
+void removeDeadEntities(Entities **entities);
 
 void freeEntities(Entities **entities);
-
-void freePlayer(Player **player);
-
-void freeEnemies(Enemy ***enemyArray, int enemyCount);
-
-void freeEnemy(Enemy** enemy);
-
-void freePassives(Passive ***passiveArray, int passiveCount);
-
-void freePassive(Passive** passive);
 
 #endif //CASTAWAY_ENTITIES_H
