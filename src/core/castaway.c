@@ -19,6 +19,7 @@ void startGame() {
     Entities *entities = NULL;
     initializeEntities(&entities);
 
+    showPlayerStats(entities->player);
     gameLoop(entities);
 
     freeEntities(&entities);
@@ -36,6 +37,8 @@ void gameLoop(Entities *entities) {
         handleInput(input, entities);
 
         actionEntities(entities);
+
+        showPlayerStats(entities->player);
 
         playerDeathSituation(entities->player);
 

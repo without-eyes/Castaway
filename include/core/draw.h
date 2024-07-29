@@ -11,4 +11,6 @@ void drawSymbol(Position position, char symbol);
 
 void drawEntityMovement(Position newPosition, Position oldPosition, char tileSymbol, char entitySymbol);
 
+void showPlayerStats(const Player* player);
+
 #endif //CASTAWAY_DRAW_H

@@ -27,3 +27,7 @@ void drawEntityMovement(const Position newPosition, const Position oldPosition, 
     mvprintw(oldPosition.y, oldPosition.x, "%c", tileSymbol);
     mvprintw(newPosition.y, newPosition.x, "%c", entitySymbol);
 }
+
+void showPlayerStats(const Player* player) {
+    mvprintw(MAP_HEIGHT + 1, 0, "Health: %d  Position: %d %d", player->attributes.health, player->position.y, player->position.x);
+}
