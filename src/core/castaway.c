@@ -1,8 +1,7 @@
 #include "../../include/core/castaway.h"
 #include "../../include/action/input.h"
-#include "../../include/core/macros.h"
 #include "../../include/action/action.h"
-
+#include "../../include/core/draw.h"
 #include <ncurses.h>
 #include <stdlib.h>
 #include <time.h>
@@ -31,14 +30,6 @@ void initializeScreen() {
     keypad(stdscr, TRUE);
 }
 
-void setMap() {
-    for (int i = 0; i < MAP_HEIGHT; i++) {
-        for (int j = 0; j < MAP_WIDTH; j++) {
-            mvprintw(i, j, ".");
-        }
-    }
-}
-
 void gameLoop(Entities *entities) {
     char input;
     while ((input = getch()) != 'q' && entities->player->attributes.isAlive) {
@@ -49,15 +40,6 @@ void gameLoop(Entities *entities) {
         playerDeathSituation(entities->player);
 
         removeDeadEntities(&entities);
-    }
-}
-
-void playerDeathSituation(const Player* player) {
-    if (!player->attributes.isAlive) {
-        clear();
-        mvprintw(1, 1, "YOU ARE DEAD!");
-        mvprintw(5, 1, "Press any button to continue...");
-        getch();
     }
 }
 

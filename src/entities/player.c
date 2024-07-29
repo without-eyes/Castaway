@@ -1,7 +1,7 @@
 #include "../../include/entities/player.h"
 #include "../../include/core/macros.h"
+#include "../../include/core/draw.h"
 #include <malloc.h>
-#include <ncurses.h>
 
 Player *initializePlayer(const Position position) {
     Player *player = (Player *) malloc(sizeof(Player));
@@ -9,7 +9,7 @@ Player *initializePlayer(const Position position) {
     player->position = position;
     player->attributes = initializeEntity(20, 2, PLAYER_SYMBOL);
 
-    mvprintw(player->position.y, player->position.x, "%c", player->attributes.symbol);
+    drawSymbol(player->position, player->attributes.symbol);
 
     return player;
 }

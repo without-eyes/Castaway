@@ -1,6 +1,7 @@
 #include "../../include/entities/passive.h"
 #include "../../include/action/movement.h"
 #include "../../include/core/macros.h"
+#include "../../include/core/draw.h"
 #include <stdlib.h>
 #include <ncurses.h>
 
@@ -10,7 +11,7 @@ Passive *initializePassive(const Position position, const int health, const int 
     passive->position = position;
     passive->attributes = initializeEntity(health, damage, symbol);
 
-    mvprintw(passive->position.y, passive->position.x, "%c", passive->attributes.symbol);
+    drawSymbol(passive->position, passive->attributes.symbol);
 
     return passive;
 }
@@ -29,7 +30,7 @@ void removeDeadPassive(Passive ***passiveArray, int* passiveCount) {
             continue;
         }
 
-        mvprintw((*passiveArray)[i]->position.y, (*passiveArray)[i]->position.x, "%c", TEST_DEAD_SYMBOL);
+        drawSymbol((*passiveArray)[i]->position, TEST_DEAD_SYMBOL);
 
         if (i < *passiveCount - 1) {
             (*passiveArray)[i] = (*passiveArray)[*passiveCount - 1];

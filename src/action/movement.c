@@ -1,11 +1,11 @@
 #include "../../include/action/movement.h"
 #include "../../include/core/macros.h"
+#include "../../include/core/draw.h"
 #include <ncurses.h>
 
 void moveEntity(const Position newPosition, Position *entityPosition, const char entitySymbol) {
     if (mvinch(newPosition.y, newPosition.x) == TEST_TILE_SYMBOL) {
-        mvprintw(entityPosition->y, entityPosition->x, "%c", TEST_TILE_SYMBOL);
-        mvprintw(newPosition.y, newPosition.x, "%c", entitySymbol);
+        drawEntityMovement(newPosition, *entityPosition, TEST_TILE_SYMBOL, entitySymbol);
         entityPosition->y = newPosition.y;
         entityPosition->x = newPosition.x;
     }

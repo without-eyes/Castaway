@@ -1,7 +1,7 @@
 #include "../../include/entities/enemy.h"
 #include "../../include/action/movement.h"
 #include "../../include/core/macros.h"
-#include <ncurses.h>
+#include "../../include/core/draw.h"
 #include <malloc.h>
 #include <stdlib.h>
 
@@ -11,7 +11,7 @@ Enemy *initializeEnemy(const Position position, const int health, const int dama
     enemy->position = position;
     enemy->attributes = initializeEntity(health, damage, symbol);
 
-    mvprintw(enemy->position.y, enemy->position.x, "%c", enemy->attributes.symbol);
+    drawSymbol(enemy->position, enemy->attributes.symbol);
 
     return enemy;
 }
@@ -30,7 +30,7 @@ void removeDeadEnemies(Enemy ***enemyArray, int* enemyCount) {
             continue;
         }
 
-        mvprintw((*enemyArray)[i]->position.y, (*enemyArray)[i]->position.x, "%c", TEST_DEAD_SYMBOL);
+        drawSymbol((*enemyArray)[i]->position, TEST_DEAD_SYMBOL);
 
         if (i < *enemyCount - 1) {
             (*enemyArray)[i] = (*enemyArray)[*enemyCount - 1];

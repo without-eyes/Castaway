@@ -29,6 +29,7 @@ void freeEntities(Entities **entities) {
     freePlayer(&((*entities)->player));
     freeEnemies(&((*entities)->enemyArray), (*entities)->enemyCount);
     freePassives(&((*entities)->passiveArray), (*entities)->passiveCount);
+
     free(*entities);
     *entities = NULL;
 }

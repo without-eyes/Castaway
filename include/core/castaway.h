@@ -9,11 +9,7 @@ void startGame();
 
 void initializeScreen();
 
-void setMap();
-
 void gameLoop(Entities *entities);
-
-void playerDeathSituation(const Player* player);
 
 void endGame();
 
