@@ -13,13 +13,15 @@ TESTDIR = ./test/
 SOURCES = $(wildcard ${SRCDIR}action/*.c) \
 		  $(wildcard ${SRCDIR}core/*.c) \
           $(wildcard ${SRCDIR}entities/*.c) \
-          $(wildcard ${SRCDIR}stats/*.c)
+          $(wildcard ${SRCDIR}stats/*.c) \
+          $(wildcard ${SRCDIR}utils/*.c)
 
 TESTS = $(filter-out ${SRCDIR}core/main.c, \
         $(SOURCES) \
         $(wildcard ${TESTDIR}action/*.c) \
         $(wildcard ${TESTDIR}entities/*.c) \
-        $(wildcard ${TESTDIR}stats/*.c))
+        $(wildcard ${TESTDIR}stats/*.c) \
+        $(wildcard ${TESTDIR}utils/*.c))
 
 # Targets
 .PHONY: all memory fullmemory test coverage allclean clean cleantest cleancoverage

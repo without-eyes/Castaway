@@ -29,6 +29,7 @@ void initializeScreen() {
     initscr();
     noecho();
     keypad(stdscr, TRUE);
+    curs_set(0);
 }
 
 void gameLoop(Entities *entities) {

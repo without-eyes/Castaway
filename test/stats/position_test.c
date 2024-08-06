@@ -1,6 +1,7 @@
 #include "../../include/stats/position.h"
 #include "../../include/core/macros.h"
 #include "../../include/core/castaway.h"
+#include "../../include/core/draw.h"
 #include <ncurses.h>
 #include <criterion/criterion.h>
 
@@ -29,6 +30,15 @@ Test(arePositionEquals, basic) {
     Position position2 = {0, 0};
 
     bool result = arePositionsEqual(position1, position2);
+
+    cr_assert_eq(result, true);
+}
+
+Test(areEntitiesBeside, basic) {
+    Position position1 = {0, 0};
+    Position position2 = {0, 1};
+
+    bool result = areEntitiesBeside(position1, position2);
 
     cr_assert_eq(result, true);
 }

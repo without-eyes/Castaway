@@ -1,5 +1,6 @@
 #include "../../include/entities/player.h"
 #include "../../include/core/castaway.h"
+#include "../../include/core/draw.h"
 #include <criterion/criterion.h>
 #include <ncurses.h>
 
@@ -31,3 +32,24 @@ Test(initializePlayer, basic, .init = setup, .fini = teardown) {
     freePlayer(&player);
 }
 
+Test(createPlayer, basic, .init = setup, .fini = teardown) {
+    Player *player = NULL;
+
+    createPlayer(&player);
+
+    cr_assert_eq(player->attributes.health, 20);
+    cr_assert_eq(player->attributes.damage, 2);
+    cr_assert_eq(player->attributes.symbol, '@');
+    cr_assert_eq(player->attributes.isAlive, true);
+    cr_assert_eq(mvinch(player->position.y, player->position.x), player->attributes.symbol);
+
+    freePlayer(&player);
+}
+
+Test(freePlayer, basic, .init = setup, .fini = teardown) {
+    Player* player = initializePlayer(getRandomPosition());
+
+    freePlayer(&player);
+
+    cr_assert_null(player);
+}

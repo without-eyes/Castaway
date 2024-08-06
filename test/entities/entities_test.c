@@ -1,5 +1,6 @@
 #include "../../include/entities/entities.h"
 #include "../../include/core/castaway.h"
+#include "../../include/core/draw.h"
 #include <criterion/criterion.h>
 #include <malloc.h>
 #include <ncurses.h>
@@ -44,55 +45,25 @@ Test(initializeEntities, basic, .init = setup, .fini = teardown) {
     freeEntities(&entities);
 }
 
-Test(createPlayer, basic, .init = setup, .fini = teardown) {
-    Player *player = NULL;
+Test(removeDeadEntities, basic, .init = setup, .fini = teardown) {
+    Entities* entities = (Entities*)malloc(sizeof(Entities));
+    entities->enemyCount = 1;
+    entities->enemyArray = (Enemy **) malloc(entities->enemyCount * sizeof(Enemy *));
+    entities->enemyArray[0] = initializeEnemy((Position){0, 0}, 0, 10, 'E');
+    entities->enemyArray[0]->attributes.isAlive = false;
+    entities->passiveCount = 1;
+    entities->passiveArray = (Passive **) malloc(entities->passiveCount * sizeof(Passive *));
+    entities->passiveArray[0] = initializePassive((Position){0, 1}, 0, 10, 'P');
+    entities->passiveArray[0]->attributes.isAlive = false;
 
-    createPlayer(&player);
+    removeDeadEntities(&entities);
 
-    cr_assert_eq(player->attributes.health, 20);
-    cr_assert_eq(player->attributes.damage, 2);
-    cr_assert_eq(player->attributes.symbol, '@');
-    cr_assert_eq(player->attributes.isAlive, true);
-    cr_assert_eq(mvinch(player->position.y, player->position.x), player->attributes.symbol);
-
-    freePlayer(&player);
+    cr_assert_eq(entities->enemyCount, 0);
+    cr_assert_eq(mvinch(0, 0), 'D');
+    cr_assert_eq(entities->passiveCount, 0);
+    cr_assert_eq(mvinch(0, 1), 'D');
 }
 
-Test(createEnemies, basic, .init = setup, .fini = teardown) {
-    int enemyCount;
-    Enemy **enemyArray = NULL;
-
-    createEnemies(&enemyArray, &enemyCount);
-
-    for (int i = 0; i < enemyCount; i++) {
-        cr_assert_eq(enemyArray[i]->attributes.health, 15);
-        cr_assert_eq(enemyArray[i]->attributes.damage, 2);
-        cr_assert_eq(enemyArray[i]->attributes.symbol, 'E');
-        cr_assert_eq(enemyArray[i]->attributes.isAlive, true);
-        cr_assert_eq(mvinch(enemyArray[i]->position.y, enemyArray[i]->position.x),
-                     enemyArray[i]->attributes.symbol);
-    }
-
-    freeEnemies(&enemyArray, enemyCount);
-}
-
-Test(createPassive, basic, .init = setup, .fini = teardown) {
-    int passiveCount;
-    Passive **passiveArray = NULL;
-
-    createPassive(&passiveArray, &passiveCount);
-
-    for (int i = 0; i < passiveCount; i++) {
-        cr_assert_eq(passiveArray[i]->attributes.health, 10);
-        cr_assert_eq(passiveArray[i]->attributes.damage, 0);
-        cr_assert_eq(passiveArray[i]->attributes.symbol, 'P');
-        cr_assert_eq(passiveArray[i]->attributes.isAlive, true);
-        cr_assert_eq(mvinch(passiveArray[i]->position.y, passiveArray[i]->position.x),
-                     passiveArray[i]->attributes.symbol);
-    }
-
-    freePassives(&passiveArray, passiveCount);
-}
 
 Test(freeEntities, basic, .init = setup, .fini = teardown) {
     Entities* entities = (Entities*)malloc(sizeof(Entities));
@@ -103,46 +74,3 @@ Test(freeEntities, basic, .init = setup, .fini = teardown) {
     cr_assert_null(entities);
 }
 
-Test(freePlayer, basic, .init = setup, .fini = teardown) {
-    Player* player = initializePlayer(getRandomPosition());
-
-    freePlayer(&player);
-
-    cr_assert_null(player);
-}
-
-Test(freeEnemies, basic, .init = setup, .fini = teardown) {
-    int enemyCount;
-    Enemy** enemyArray;
-    createEnemies(&enemyArray, &enemyCount);
-
-    freeEnemies(&enemyArray, enemyCount);
-
-    cr_assert_null(enemyArray);
-}
-
-Test(freeEnemy, basic, .init = setup, .fini = teardown) {
-    Enemy* enemy = initializeEnemy((Position){0, 0}, 1, 1, 'E');
-
-    freeEnemy(&enemy);
-
-    cr_assert_null(enemy);
-}
-
-Test(freePassives, basic, .init = setup, .fini = teardown) {
-    int passiveCount;
-    Passive** passiveArray;
-    createPassive(&passiveArray, &passiveCount);
-
-    freePassives(&passiveArray, passiveCount);
-
-    cr_assert_null(passiveArray);
-}
-
-Test(freePassive, basic, .init = setup, .fini = teardown) {
-    Passive* passive = initializePassive((Position){0, 0}, 1, 1, 'P');
-
-    freePassive(&passive);
-
-    cr_assert_null(passive);
-}
