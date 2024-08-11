@@ -2,12 +2,11 @@
 
 ## Overview
 
-Welcome to **Game Project Title**! This is a brief description of the game. Explain the genre, gameplay mechanics, and what makes it unique. 
+Welcome to **Castaway**! Castaway is a multiplayer sandbox survival ASCII game set on remote island where main character have to survive in harsh conditions.
 
 ## Table of Contents
 
 - [Installation](#installation)
-- [Features](#features)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
@@ -42,6 +41,8 @@ Before running the game, ensure you have the following installed:
 
     ```bash
     sudo apt-get install libncurses5-dev libncursesw5-dev
+    sudo apt-get install valgrind
+    apt-get install libcriterion-dev
     ```
 
 4. Run the game:
@@ -50,23 +51,11 @@ Before running the game, ensure you have the following installed:
     make
     ```
 
-## Features
-
-- **Feature 1**: Brief description.
-- **Feature 2**: Brief description.
-- **Feature 3**: Brief description.
-
 ## Usage
 
 ### Controls
 
-- **Move**: WASD or Arrow Keys
-- **Jump**: Spacebar
-- **Action**: E
-
-### Gameplay Instructions
-
-Provide a short guide on how to play the game. Explain the objectives, any special gameplay elements, and tips for success.
+- **Move and attack**: WASD
 
 ## Contributing
 
