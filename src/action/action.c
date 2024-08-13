@@ -12,7 +12,7 @@ void actionPlayer(const Position newPosition, Entities *entities) {
         combatPassive(entities->player,
                       findAttackedPassive(newPosition, entities->passiveArray, entities->passiveCount));
     } else {
-        moveEntity(newPosition, &entities->player->position, entities->player->attributes.symbol);
+        moveEntity(newPosition, &entities->player->location, entities->player->attributes.symbol);
     }
 }
 
@@ -23,10 +23,10 @@ void actionEntities(Entities *entities) {
 
 void actionEnemies(Enemy **enemyArray, const int enemyCount, Player* player) {
     for (int i = 0; i < enemyCount; i++) {
-        if (areEntitiesBeside(enemyArray[i]->position, player->position)) {
+        if (areEntitiesBeside(enemyArray[i]->location.position, player->location.position)) {
             combatEnemy(player, enemyArray[i], false);
         } else {
-            goToPlayer(enemyArray[i], player->position);
+            goToPlayer(enemyArray[i], player->location.position);
         }
     }
 }

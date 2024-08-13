@@ -6,25 +6,25 @@ void handleInput(const char input, Entities *entities) {
     switch (input) {
         case 'W':
         case 'w':
-            position = (Position) {entities->player->position.y - 1, entities->player->position.x};
+            position = (Position) {entities->player->location.position.y - 1, entities->player->location.position.x};
             actionPlayer(position, entities);
             break;
 
         case 'A':
         case 'a':
-            position = (Position) {entities->player->position.y, entities->player->position.x - 1};
+            position = (Position) {entities->player->location.position.y, entities->player->location.position.x - 1};
             actionPlayer(position, entities);
             break;
 
         case 'S':
         case 's':
-            position = (Position) {entities->player->position.y + 1, entities->player->position.x};
+            position = (Position) {entities->player->location.position.y + 1, entities->player->location.position.x};
             actionPlayer(position, entities);
             break;
 
         case 'D':
         case 'd':
-            position = (Position) {entities->player->position.y, entities->player->position.x + 1};
+            position = (Position) {entities->player->location.position.y, entities->player->location.position.x + 1};
             actionPlayer(position, entities);
             break;
 

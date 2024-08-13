@@ -5,10 +5,20 @@
 #define MAP_HEIGHT 40
 #define MAP_WIDTH 70
 
+// ENTITY MACROS
 #define PLAYER_SYMBOL '@'
 
+// MAP MACROS
+#define PLAIN_GROUND_SYMBOL ' '
+#define GRASS_SYMBOL_1 '\''
+#define GRASS_SYMBOL_2 '\"'
+#define GRASS_SYMBOL_3 ','
+#define GRASS_SYMBOL_4 '`'
+#define FLOWER_SYMBOL '*'
+#define MOUNTAIN_OUTSIDE_SYMBOL 'X'
+#define MOUNTAIN_INSIDE_SYMBOL '.'
+
 // ====== TEST MACROS ========
-#define TEST_TILE_SYMBOL '.'
 #define TEST_ENEMY_SYMBOL 'E'
 #define TEST_PASSIVE_SYMBOL 'P'
 #define TEST_DEAD_SYMBOL 'D'

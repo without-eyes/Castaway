@@ -1,7 +1,7 @@
 #include "../../include/stats/position.h"
 #include "../../include/core/macros.h"
 #include "../../include/core/castaway.h"
-#include "../../include/core/draw.h"
+#include "../../include/utils/draw.h"
 #include <ncurses.h>
 #include <criterion/criterion.h>
 

@@ -8,7 +8,8 @@ Position getRandomPosition() {
     do {
         position.y = rand() % MAP_HEIGHT;
         position.x = rand() % MAP_WIDTH;
-    } while (mvinch(position.y, position.x) != TEST_TILE_SYMBOL);
+    } while (mvinch(position.y, position.x) == MOUNTAIN_INSIDE_SYMBOL ||
+             mvinch(position.y, position.x) == MOUNTAIN_OUTSIDE_SYMBOL);
     return position;
 }
 

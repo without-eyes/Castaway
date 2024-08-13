@@ -1,7 +1,7 @@
 #include "../../include/core/castaway.h"
 #include "../../include/action/input.h"
 #include "../../include/action/action.h"
-#include "../../include/core/draw.h"
+#include "../../include/utils/draw.h"
 #include <ncurses.h>
 #include <stdlib.h>
 #include <time.h>
@@ -19,7 +19,7 @@ void startGame() {
     Entities *entities = NULL;
     initializeEntities(&entities);
 
-    showPlayerStats(entities->player);
+    showHUD(entities->player);
     gameLoop(entities);
 
     freeEntities(&entities);
@@ -39,7 +39,7 @@ void gameLoop(Entities *entities) {
 
         actionEntities(entities);
 
-        showPlayerStats(entities->player);
+        showHUD(entities->player);
 
         playerDeathSituation(entities->player);
 

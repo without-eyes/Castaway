@@ -1,6 +1,6 @@
 #include "../../include/action/combat.h"
 #include "../../include/core/castaway.h"
-#include "../../include/core/draw.h"
+#include "../../include/utils/draw.h"
 #include <criterion/criterion.h>
 #include <ncurses.h>
 

@@ -1,4 +1,4 @@
-#include "../../include/core/draw.h"
+#include "../../include/utils/draw.h"
 #include "../../include/core/castaway.h"
 #include <ncurses.h>
 #include <criterion/criterion.h>

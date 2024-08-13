@@ -1,12 +1,21 @@
-#include "../../include/core/draw.h"
+#include "../../include/utils/draw.h"
 #include "../../include/core/macros.h"
 #include <ncurses.h>
 
 void setMap() {
     for (int i = 0; i < MAP_HEIGHT; i++) {
         for (int j = 0; j < MAP_WIDTH; j++) {
-            mvprintw(i, j, ".");
+            if (i == 0 || i == MAP_HEIGHT - 1 ||
+                j == 0 || j == MAP_WIDTH - 1) {
+                mvprintw(i, j, "%c", MOUNTAIN_OUTSIDE_SYMBOL);
+            } else {
+                mvprintw(i, j, "%c", getRandomWalkableTile());
+            }
         }
+
+        mvprintw(10, 10, "XXX");
+        mvprintw(11, 10, "X.X");
+        mvprintw(12, 10, "XXX");
     }
 }
 
@@ -28,6 +37,7 @@ void drawEntityMovement(const Position newPosition, const Position oldPosition, 
     mvprintw(newPosition.y, newPosition.x, "%c", entitySymbol);
 }
 
-void showPlayerStats(const Player* player) {
-    mvprintw(MAP_HEIGHT + 1, 0, "Health: %d  Position: %d %d", player->attributes.health, player->position.y, player->position.x);
+void showHUD(const Player* player) {
+    mvprintw(MAP_HEIGHT + 1, 0, "                           ");
+    mvprintw(MAP_HEIGHT + 1, 0, "Health: %d  Position: %d %d", player->attributes.health, player->location.position.y, player->location.position.x);
 }

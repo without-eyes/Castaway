@@ -1,15 +1,15 @@
 #include "../../include/entities/player.h"
 #include "../../include/core/macros.h"
-#include "../../include/core/draw.h"
+#include "../../include/utils/draw.h"
 #include <malloc.h>
 
 Player *initializePlayer(const Position position) {
     Player *player = (Player *) malloc(sizeof(Player));
 
-    player->position = position;
+    player->location = setLocationData(position);
     player->attributes = initializeEntity(20, 2, PLAYER_SYMBOL);
 
-    drawSymbol(player->position, player->attributes.symbol);
+    drawSymbol(player->location.position, player->attributes.symbol);
 
     return player;
 }

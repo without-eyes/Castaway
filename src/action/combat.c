@@ -22,7 +22,7 @@ void combatPassive(const Player *player, Passive *passive) {
 
 Enemy *findAttackedEnemy(const Position position, Enemy **enemyArray, const int enemyCount) {
     for (int i = 0; i < enemyCount; i++) {
-        if (arePositionsEqual(enemyArray[i]->position, position)) {
+        if (arePositionsEqual(enemyArray[i]->location.position, position)) {
             return enemyArray[i];
         }
     }
@@ -31,7 +31,7 @@ Enemy *findAttackedEnemy(const Position position, Enemy **enemyArray, const int 
 
 Passive *findAttackedPassive(const Position position, Passive **passiveArray, const int passiveCount) {
     for (int i = 0; i < passiveCount; i++) {
-        if (arePositionsEqual(passiveArray[i]->position, position)) {
+        if (arePositionsEqual(passiveArray[i]->location.position, position)) {
             return passiveArray[i];
         }
     }

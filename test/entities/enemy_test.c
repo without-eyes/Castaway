@@ -1,7 +1,7 @@
 #include "../../include/entities/enemy.h"
 #include "../../include/action/movement.h"
 #include "../../include/core/castaway.h"
-#include "../../include/core/draw.h"
+#include "../../include/utils/draw.h"
 #include <criterion/criterion.h>
 #include <malloc.h>
 #include <ncurses.h>

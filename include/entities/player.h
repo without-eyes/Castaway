@@ -2,9 +2,10 @@
 #define CASTAWAY_PLAYER_H
 
 #include "../stats/attributes.h"
+#include "../stats/location.h"
 
 typedef struct {
-    Position position;
+    Location location;
     Attributes attributes;
 } Player;
 
