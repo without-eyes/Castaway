@@ -2,16 +2,17 @@
 #define CASTAWAY_ATTRIBUTES_H
 
 #include <stdbool.h>
+#include <ncurses.h>
 #include "position.h"
 
 typedef struct {
     int health;
     int damage;
-    char symbol;
+    chtype symbol;
     bool isAlive;
 } Attributes;
 
-Attributes initializeEntity(int health, int damage, char symbol);
+Attributes initializeEntity(int health, int damage, chtype symbol);
 
 
 #endif //CASTAWAY_ATTRIBUTES_H

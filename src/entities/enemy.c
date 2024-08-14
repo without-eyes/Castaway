@@ -5,7 +5,7 @@
 #include <malloc.h>
 #include <stdlib.h>
 
-Enemy *initializeEnemy(const Position position, const int health, const int damage, const char symbol) {
+Enemy *initializeEnemy(const Position position, const int health, const int damage, const chtype symbol) {
     Enemy *enemy = (Enemy *) malloc(sizeof(Enemy));
 
     enemy->location = setLocationData(position);

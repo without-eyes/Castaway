@@ -10,7 +10,7 @@ Location setLocationData(const Position position) {
     return location;
 }
 
-char getRandomWalkableTile() {
+chtype getRandomWalkableTile() {
     int tile = rand() % 50;
     switch (tile) {
         case 0 ... 44: return PLAIN_GROUND_SYMBOL;

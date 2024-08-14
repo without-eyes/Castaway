@@ -1,15 +1,16 @@
 #ifndef CASTAWAY_LOCATION_H
 #define CASTAWAY_LOCATION_H
 
+#include <ncurses.h>
 #include "position.h"
 
 typedef struct {
     Position position;
-    char tileSymbol;
+    chtype tileSymbol;
 } Location;
 
 Location setLocationData(Position position);
 
-char getRandomWalkableTile();
+chtype getRandomWalkableTile();
 
 #endif //CASTAWAY_LOCATION_H

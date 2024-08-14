@@ -9,7 +9,7 @@ typedef struct {
     Attributes attributes;
 } Passive;
 
-Passive *initializePassive(Position position, int health, int damage, char symbol);
+Passive *initializePassive(Position position, int health, int damage, chtype symbol);
 
 void createPassive(Passive ***passiveArray, int *passiveCount);
 

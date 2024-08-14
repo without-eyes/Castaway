@@ -30,6 +30,7 @@ void initializeScreen() {
     noecho();
     keypad(stdscr, TRUE);
     curs_set(0);
+    initColors();
 }
 
 void gameLoop(Entities *entities) {

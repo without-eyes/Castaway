@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <ncurses.h>
 
-Passive *initializePassive(const Position position, const int health, const int damage, const char symbol) {
+Passive *initializePassive(const Position position, const int health, const int damage, const chtype symbol) {
     Passive *passive = (Passive *) malloc(sizeof(Passive));
 
     passive->location = setLocationData(position);

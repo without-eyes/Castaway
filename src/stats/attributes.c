@@ -1,6 +1,6 @@
 #include "../../include/stats/attributes.h"
 
-Attributes initializeEntity(const int health, const int damage, const char symbol) {
+Attributes initializeEntity(const int health, const int damage, const chtype symbol) {
     Attributes attributes;
 
     attributes.health = health;

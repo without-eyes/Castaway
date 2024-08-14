@@ -7,10 +7,12 @@ void setMap();
 
 void playerDeathSituation(const Player* player);
 
-void drawSymbol(Position position, char symbol);
+void drawSymbol(Position position, chtype symbol);
 
-void drawEntityMovement(Position newPosition, Position oldPosition, char tileSymbol, char entitySymbol);
+void drawEntityMovement(Position newPosition, Position oldPosition, chtype tileSymbol, chtype entitySymbol);
 
 void showHUD(const Player* player);
+
+void initColors();
 
 #endif //CASTAWAY_DRAW_H

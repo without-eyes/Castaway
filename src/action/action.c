@@ -5,10 +5,10 @@
 #include <ncurses.h>
 
 void actionPlayer(const Position newPosition, Entities *entities) {
-    if (mvinch(newPosition.y, newPosition.x) == TEST_ENEMY_SYMBOL) {
+    if ((mvinch(newPosition.y, newPosition.x) & A_CHARTEXT) == TEST_ENEMY_SYMBOL) {
         combatEnemy(entities->player,
                     findAttackedEnemy(newPosition, entities->enemyArray, entities->enemyCount), true);
-    } else if (mvinch(newPosition.y, newPosition.x) == TEST_PASSIVE_SYMBOL) {
+    } else if ((mvinch(newPosition.y, newPosition.x) & A_CHARTEXT) == TEST_PASSIVE_SYMBOL) {
         combatPassive(entities->player,
                       findAttackedPassive(newPosition, entities->passiveArray, entities->passiveCount));
     } else {
