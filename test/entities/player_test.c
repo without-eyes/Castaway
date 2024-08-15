@@ -47,7 +47,7 @@ Test(createPlayer, basic, .init = setup, .fini = teardown) {
 }
 
 Test(freePlayer, basic, .init = setup, .fini = teardown) {
-    Player* player = initializePlayer(getRandomPosition());
+    Player *player = initializePlayer(getRandomPosition());
 
     freePlayer(&player);
 

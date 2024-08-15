@@ -2,7 +2,7 @@
 #define CASTAWAY_PASSIVE_H
 
 #include "../stats/attributes.h"
-#include "../stats/location.h"
+#include "../map/location.h"
 
 typedef struct {
     Location location;
@@ -13,11 +13,11 @@ Passive *initializePassive(Position position, int health, int damage, chtype sym
 
 void createPassive(Passive ***passiveArray, int *passiveCount);
 
-void removeDeadPassive(Passive ***passiveArray, int* passiveCount);
+void removeDeadPassive(Passive ***passiveArray, int *passiveCount);
 
 void freePassives(Passive ***passiveArray, int passiveCount);
 
-void freePassive(Passive** passive);
+void freePassive(Passive **passive);
 
 void idleAndMove(Passive *passive);
 

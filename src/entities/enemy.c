@@ -20,11 +20,11 @@ void createEnemies(Enemy ***enemyArray, int *enemyCount) {
     *enemyCount = rand() % (TEST_ENEMY_MAX_COUNT - TEST_ENEMY_MIN_COUNT) + TEST_ENEMY_MIN_COUNT;
     *enemyArray = (Enemy **) malloc(*enemyCount * sizeof(Enemy *));
     for (int i = 0; i < *enemyCount; i++) {
-        (*enemyArray)[i] = initializeEnemy(getRandomPosition(), 15, 2, TEST_ENEMY_SYMBOL);
+        (*enemyArray)[i] = initializeEnemy(getRandomPosition(), 10, 2, TEST_ENEMY_SYMBOL);
     }
 }
 
-void removeDeadEnemies(Enemy ***enemyArray, int* enemyCount) {
+void removeDeadEnemies(Enemy ***enemyArray, int *enemyCount) {
     for (int i = 0; i < *enemyCount; i++) {
         if ((*enemyArray)[i]->attributes.isAlive) {
             continue;

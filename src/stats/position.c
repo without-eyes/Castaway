@@ -1,6 +1,6 @@
 #include "../../include/stats/position.h"
 #include "../../include/core/macros.h"
-#include <ncurses.h>
+#include "../../include/map/map.h"
 #include <stdlib.h>
 
 Position getRandomPosition() {
@@ -8,8 +8,8 @@ Position getRandomPosition() {
     do {
         position.y = rand() % MAP_HEIGHT;
         position.x = rand() % MAP_WIDTH;
-    } while ((mvinch(position.y, position.x) & A_CHARTEXT) == MOUNTAIN_INSIDE_SYMBOL ||
-             (mvinch(position.y, position.x) & A_CHARTEXT) == MOUNTAIN_OUTSIDE_SYMBOL);
+    } while (map[position.y][position.x] == MOUNTAIN_INSIDE_SYMBOL ||
+            map[position.y][position.x] == MOUNTAIN_OUTSIDE_SYMBOL);
     return position;
 }
 

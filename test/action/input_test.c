@@ -15,7 +15,7 @@ static void teardown() {
 Test(handleInput, basic, .init = setup, .fini = teardown) {
     const Position position = {0, 0};
     Entities *entities = malloc(sizeof(Entities));
-    *entities = (Entities){initializePlayer(position), 0, NULL, 0, NULL};
+    *entities = (Entities) {initializePlayer(position), 0, NULL, 0, NULL};
 
     handleInput('s', entities);
 

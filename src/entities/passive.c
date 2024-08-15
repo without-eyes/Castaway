@@ -24,7 +24,7 @@ void createPassive(Passive ***passiveArray, int *passiveCount) {
     }
 }
 
-void removeDeadPassive(Passive ***passiveArray, int* passiveCount) {
+void removeDeadPassive(Passive ***passiveArray, int *passiveCount) {
     for (int i = 0; i < *passiveCount; i++) {
         if ((*passiveArray)[i]->attributes.isAlive) {
             continue;
@@ -71,30 +71,27 @@ void idleAndMove(Passive *passive) {
 }
 
 void randomMovement(Passive *passive) {
-    Position newPosition;
+    Position newPosition = passive->location.position;
     unsigned char direction = rand() % 4;
     switch (direction) {
         case 0:
-            newPosition = (Position) {passive->location.position.y + 1, passive->location.position.x};
-            moveEntity(newPosition, &passive->location, passive->attributes.symbol);
+            newPosition.y++;
             break;
 
         case 1:
-            newPosition = (Position) {passive->location.position.y - 1, passive->location.position.x};
-            moveEntity(newPosition, &passive->location, passive->attributes.symbol);
+            newPosition.y--;
             break;
 
         case 2:
-            newPosition = (Position) {passive->location.position.y, passive->location.position.x + 1};
-            moveEntity(newPosition, &passive->location, passive->attributes.symbol);
+            newPosition.x++;
             break;
 
         case 3:
-            newPosition = (Position) {passive->location.position.y, passive->location.position.x - 1};
-            moveEntity(newPosition, &passive->location, passive->attributes.symbol);
+            newPosition.x--;
             break;
 
         default:
             break;
     }
+    moveEntity(newPosition, &passive->location, passive->attributes.symbol);
 }

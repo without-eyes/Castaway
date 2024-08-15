@@ -15,14 +15,15 @@ static void teardown() {
 }
 
 Test(initializeEntities, basic, .init = setup, .fini = teardown) {
-    Entities* entities = (Entities*)malloc(sizeof(Entities));
+    Entities *entities = (Entities *) malloc(sizeof(Entities));
     initializeEntities(&entities);
 
     cr_assert_eq(entities->player->attributes.health, 20);
     cr_assert_eq(entities->player->attributes.damage, 2);
     cr_assert_eq(entities->player->attributes.symbol, '@');
     cr_assert_eq(entities->player->attributes.isAlive, true);
-    cr_assert_eq(mvinch(entities->player->position.y, entities->player->position.x), entities->player->attributes.symbol);
+    cr_assert_eq(mvinch(entities->player->position.y, entities->player->position.x),
+                 entities->player->attributes.symbol);
 
     for (int i = 0; i < entities->enemyCount; i++) {
         cr_assert_eq(entities->enemyArray[i]->attributes.health, 15);
@@ -46,14 +47,14 @@ Test(initializeEntities, basic, .init = setup, .fini = teardown) {
 }
 
 Test(removeDeadEntities, basic, .init = setup, .fini = teardown) {
-    Entities* entities = (Entities*)malloc(sizeof(Entities));
+    Entities *entities = (Entities *) malloc(sizeof(Entities));
     entities->enemyCount = 1;
     entities->enemyArray = (Enemy **) malloc(entities->enemyCount * sizeof(Enemy *));
-    entities->enemyArray[0] = initializeEnemy((Position){0, 0}, 0, 10, 'E');
+    entities->enemyArray[0] = initializeEnemy((Position) {0, 0}, 0, 10, 'E');
     entities->enemyArray[0]->attributes.isAlive = false;
     entities->passiveCount = 1;
     entities->passiveArray = (Passive **) malloc(entities->passiveCount * sizeof(Passive *));
-    entities->passiveArray[0] = initializePassive((Position){0, 1}, 0, 10, 'P');
+    entities->passiveArray[0] = initializePassive((Position) {0, 1}, 0, 10, 'P');
     entities->passiveArray[0]->attributes.isAlive = false;
 
     removeDeadEntities(&entities);
@@ -66,7 +67,7 @@ Test(removeDeadEntities, basic, .init = setup, .fini = teardown) {
 
 
 Test(freeEntities, basic, .init = setup, .fini = teardown) {
-    Entities* entities = (Entities*)malloc(sizeof(Entities));
+    Entities *entities = (Entities *) malloc(sizeof(Entities));
     initializeEntities(&entities);
 
     freeEntities(&entities);

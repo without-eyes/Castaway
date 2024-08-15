@@ -2,6 +2,7 @@
 #include "../../include/action/input.h"
 #include "../../include/action/action.h"
 #include "../../include/utils/draw.h"
+#include "../../include/map/map.h"
 #include <ncurses.h>
 #include <stdlib.h>
 #include <time.h>
@@ -13,9 +14,10 @@ void runGame() {
 
 void startGame() {
     initializeScreen();
+    srand(time(NULL));
+
     setMap();
 
-    srand(time(NULL));
     Entities *entities = NULL;
     initializeEntities(&entities);
 
@@ -36,11 +38,13 @@ void initializeScreen() {
 void gameLoop(Entities *entities) {
     char input;
     while ((input = getch()) != 'q' && entities->player->attributes.isAlive) {
+        drawMapAroundPlayer(entities->player);
+
+        showHUD(entities->player);
+
         handleInput(input, entities);
 
         actionEntities(entities);
-
-        showHUD(entities->player);
 
         playerDeathSituation(entities->player);
 

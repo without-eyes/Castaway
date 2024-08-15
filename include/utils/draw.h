@@ -3,16 +3,16 @@
 
 #include "../entities/player.h"
 
-void setMap();
-
-void playerDeathSituation(const Player* player);
+void playerDeathSituation(const Player *player);
 
 void drawSymbol(Position position, chtype symbol);
 
 void drawEntityMovement(Position newPosition, Position oldPosition, chtype tileSymbol, chtype entitySymbol);
 
-void showHUD(const Player* player);
+void showHUD(const Player *player);
 
 void initColors();
+
+void drawMapAroundPlayer(const Player *player);
 
 #endif //CASTAWAY_DRAW_H

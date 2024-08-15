@@ -2,34 +2,31 @@
 #include "../../include/action/action.h"
 
 void handleInput(const char input, Entities *entities) {
-    Position position;
+    Position position = entities->player->location.position;
     switch (input) {
         case 'W':
         case 'w':
-            position = (Position) {entities->player->location.position.y - 1, entities->player->location.position.x};
-            actionPlayer(position, entities);
+            position.y--;
             break;
 
         case 'A':
         case 'a':
-            position = (Position) {entities->player->location.position.y, entities->player->location.position.x - 1};
-            actionPlayer(position, entities);
+            position.x--;
             break;
 
         case 'S':
         case 's':
-            position = (Position) {entities->player->location.position.y + 1, entities->player->location.position.x};
-            actionPlayer(position, entities);
+            position.y++;
             break;
 
         case 'D':
         case 'd':
-            position = (Position) {entities->player->location.position.y, entities->player->location.position.x + 1};
-            actionPlayer(position, entities);
+            position.x++;
             break;
 
         default:
             break;
     }
+    actionPlayer(position, entities);
 }
 

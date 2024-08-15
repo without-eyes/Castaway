@@ -1,29 +1,14 @@
 #include "../../include/utils/draw.h"
 #include "../../include/core/macros.h"
+#include "../../include/map/map.h"
 #include <ncurses.h>
 
-void setMap() {
-    for (int i = 0; i < MAP_HEIGHT; i++) {
-        for (int j = 0; j < MAP_WIDTH; j++) {
-            Position position = {i, j};
-            if (i == 0 || i == MAP_HEIGHT - 1 ||
-                j == 0 || j == MAP_WIDTH - 1) {
-                drawSymbol(position, MOUNTAIN_INSIDE_SYMBOL);
-            } else if (i == 1 || i == MAP_HEIGHT - 2 ||
-                       j == 1 || j == MAP_WIDTH - 2) {
-                drawSymbol(position, MOUNTAIN_OUTSIDE_SYMBOL);
-            } else {
-                drawSymbol(position, getRandomWalkableTile());
-            }
-        }
-    }
-    refresh();
-}
-
-void playerDeathSituation(const Player* player) {
+void playerDeathSituation(const Player *player) {
     if (!player->attributes.isAlive) {
         clear();
+        attron(COLOR_PAIR(6));
         mvprintw(1, 1, "YOU ARE DEAD!");
+        attroff(COLOR_PAIR(6));
         mvprintw(5, 1, "Press any button to continue...");
         getch();
     }
@@ -37,7 +22,7 @@ void drawSymbol(const Position position, const chtype symbol) {
             pairNumber = 1;
             break;
 
-        // GREEN
+            // GREEN
         case GRASS_SYMBOL_1:
         case GRASS_SYMBOL_2:
         case GRASS_SYMBOL_3:
@@ -45,52 +30,51 @@ void drawSymbol(const Position position, const chtype symbol) {
             pairNumber = 2;
             break;
 
-        // MAGENTA
+            // MAGENTA
         case FLOWER_SYMBOL:
             pairNumber = 3;
             break;
 
-        // GREY
+            // GREY
         case MOUNTAIN_OUTSIDE_SYMBOL:
             pairNumber = 4;
             break;
 
-        // WHITE
+            // WHITE
         case PLAYER_SYMBOL:
         case MOUNTAIN_INSIDE_SYMBOL:
             pairNumber = 5;
             break;
 
-        // RED
+            // RED
         case TEST_DEAD_SYMBOL:
         case TEST_ENEMY_SYMBOL:
             pairNumber = 6;
             break;
 
-        // YELLOW
+            // YELLOW
         case TEST_PASSIVE_SYMBOL:
             pairNumber = 7;
             break;
 
-        // CYAN
+            // CYAN
         default:
             pairNumber = 8;
             break;
     }
 
+    map[position.y][position.x] = symbol;
+
     attron(COLOR_PAIR(pairNumber));
     mvprintw(position.y, position.x, "%c", symbol);
     attroff(COLOR_PAIR(pairNumber));
+
 }
 
-void drawEntityMovement(const Position newPosition, const Position oldPosition, const chtype tileSymbol, const chtype entitySymbol) {
-    drawSymbol(oldPosition, tileSymbol);
-    drawSymbol(newPosition, entitySymbol);
-}
-
-void showHUD(const Player* player) {
+void showHUD(const Player *player) {
     mvprintw(MAP_HEIGHT + 1, 0, "                           ");
-    mvprintw(MAP_HEIGHT + 1, 0, "Health: %d  Position: %d %d", player->attributes.health, player->location.position.y, player->location.position.x);
+    mvprintw(MAP_HEIGHT + 1, 0, "Health: %d  Position: %d %d", player->attributes.health, player->location.position.y,
+             player->location.position.x);
 }
 
 void initColors() {
@@ -110,3 +94,27 @@ void initColors() {
     init_pair(7, COLOR_YELLOW, backgroundColor);
     init_pair(8, COLOR_CYAN, backgroundColor);
 }
+
+void drawMapAroundPlayer(const Player *player) {
+    clear();
+
+    int screenStartY = player->location.position.y - SCREEN_HEIGHT / 2;
+    int screenStartX = player->location.position.x - SCREEN_WIDTH / 2;
+
+    for (int i = 0; i < SCREEN_HEIGHT; i++) {
+        for (int j = 0; j < SCREEN_WIDTH; j++) {
+            int mapY = screenStartY + i;
+            int mapX = screenStartX + j;
+            Position position = {i, j};
+
+            if (mapY >= 0 && mapY < MAP_HEIGHT && mapX >= 0 && mapX < MAP_WIDTH) {
+                drawSymbol(position, map[mapY][mapX]);
+            } else {
+                drawSymbol(position, ' ');
+            }
+        }
+    }
+
+    drawSymbol((Position){SCREEN_HEIGHT / 2, SCREEN_WIDTH / 2}, player->attributes.symbol);
+}
+

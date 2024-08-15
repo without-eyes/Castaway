@@ -54,8 +54,8 @@ Test(createEnemies, basic, .init = setup, .fini = teardown) {
 
 Test(removeDeadEnemies, basic, .init = setup, .fini = teardown) {
     int enemyCount = 1;
-    Enemy** enemyArray = (Enemy **) malloc(enemyCount * sizeof(Enemy *));
-    enemyArray[0] = initializeEnemy((Position){0, 0}, 0, 10, 'E');
+    Enemy **enemyArray = (Enemy **) malloc(enemyCount * sizeof(Enemy *));
+    enemyArray[0] = initializeEnemy((Position) {0, 0}, 0, 10, 'E');
     enemyArray[0]->attributes.isAlive = false;
 
     removeDeadEnemies(&enemyArray, &enemyCount);
@@ -68,7 +68,7 @@ Test(removeDeadEnemies, basic, .init = setup, .fini = teardown) {
 
 Test(freeEnemies, basic, .init = setup, .fini = teardown) {
     int enemyCount;
-    Enemy** enemyArray;
+    Enemy **enemyArray;
 
     createEnemies(&enemyArray, &enemyCount);
 
@@ -78,7 +78,7 @@ Test(freeEnemies, basic, .init = setup, .fini = teardown) {
 }
 
 Test(freeEnemy, basic, .init = setup, .fini = teardown) {
-    Enemy* enemy = initializeEnemy((Position){0, 0}, 1, 1, 'E');
+    Enemy *enemy = initializeEnemy((Position) {0, 0}, 1, 1, 'E');
 
     freeEnemy(&enemy);
 

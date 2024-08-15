@@ -2,7 +2,8 @@
 
 ## Overview
 
-Welcome to **Castaway**! Castaway is a multiplayer sandbox survival ASCII game set on remote island where main character have to survive in harsh conditions.
+Welcome to **Castaway**! Castaway is a multiplayer sandbox survival ASCII game set on remote island where main character
+have to survive in harsh conditions.
 
 ## Table of Contents
 
@@ -21,7 +22,6 @@ Before running the game, ensure you have the following installed:
 - [ncurses](https://invisible-island.net/ncurses/) - Version 6.3 or above
 - [valgrind](https://valgrind.org/) - Version 3.23 or above
 - [criterion](https://criterion.readthedocs.io/en/master/intro.html) - Version 2.4 or above
-
 
 ### Setup
 

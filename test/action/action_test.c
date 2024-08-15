@@ -16,7 +16,7 @@ Test(actionPlayer, basic, .init = setup, .fini = teardown) {
     const Position position = {0, 0};
     const Position newPosition = {1, 0};
     Entities *entities = malloc(sizeof(Entities));
-    *entities = (Entities){initializePlayer(position), 0, NULL, 0, NULL};
+    *entities = (Entities) {initializePlayer(position), 0, NULL, 0, NULL};
 
     actionPlayer(newPosition, entities);
 
@@ -27,14 +27,14 @@ Test(actionPlayer, basic, .init = setup, .fini = teardown) {
 }
 
 Test(actionEntities, basic, .init = setup, .fini = teardown) {
-    Entities* entities = (Entities *) malloc(sizeof(Entities));
-    entities->player = initializePlayer((Position){0, 2});
+    Entities *entities = (Entities *) malloc(sizeof(Entities));
+    entities->player = initializePlayer((Position) {0, 2});
     entities->enemyCount = 1;
     entities->enemyArray = (Enemy **) malloc(entities->enemyCount * sizeof(Enemy *));
-    entities->enemyArray[0] = initializeEnemy((Position){0, 0}, 10, 10, 'E');
+    entities->enemyArray[0] = initializeEnemy((Position) {0, 0}, 10, 10, 'E');
     entities->passiveCount = 1;
     entities->passiveArray = (Passive **) malloc(entities->passiveCount * sizeof(Passive *));
-    entities->passiveArray[0] = initializePassive((Position){0, 0}, 10, 0, 'P');
+    entities->passiveArray[0] = initializePassive((Position) {0, 0}, 10, 0, 'P');
 
     actionEntities(entities);
 
@@ -47,9 +47,9 @@ Test(actionEntities, basic, .init = setup, .fini = teardown) {
 }
 
 Test(actionEnemies, basic, .init = setup, .fini = teardown) {
-    Enemy** enemies = (Enemy **) malloc(1 * sizeof(Enemy *));
-    enemies[0] = initializeEnemy((Position){0, 0}, 10, 10, 'E');
-    Player* player = initializePlayer((Position){0, 2});
+    Enemy **enemies = (Enemy **) malloc(1 * sizeof(Enemy *));
+    enemies[0] = initializeEnemy((Position) {0, 0}, 10, 10, 'E');
+    Player *player = initializePlayer((Position) {0, 2});
 
     actionEnemies(enemies, 1, player);
 
@@ -60,8 +60,8 @@ Test(actionEnemies, basic, .init = setup, .fini = teardown) {
 }
 
 Test(actionPassives, basic, .init = setup, .fini = teardown) {
-    Passive** passives = (Passive **) malloc(1 * sizeof(Passive *));
-    passives[0] = initializePassive((Position){0, 0}, 10, 0, 'P');
+    Passive **passives = (Passive **) malloc(1 * sizeof(Passive *));
+    passives[0] = initializePassive((Position) {0, 0}, 10, 0, 'P');
 
     actionPassives(passives, 1);
 

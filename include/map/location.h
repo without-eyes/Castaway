@@ -2,7 +2,7 @@
 #define CASTAWAY_LOCATION_H
 
 #include <ncurses.h>
-#include "position.h"
+#include "../stats/position.h"
 
 typedef struct {
     Position position;

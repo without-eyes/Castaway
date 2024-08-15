@@ -52,8 +52,8 @@ Test(createPassive, basic, .init = setup, .fini = teardown) {
 
 Test(removeDeadPassive, basic, .init = setup, .fini = teardown) {
     int passiveCount = 1;
-    Passive** passiveArray = (Passive **) malloc(passiveCount * sizeof(Passive *));
-    passiveArray[0] = initializePassive((Position){0, 0}, 0, 10, 'P');
+    Passive **passiveArray = (Passive **) malloc(passiveCount * sizeof(Passive *));
+    passiveArray[0] = initializePassive((Position) {0, 0}, 0, 10, 'P');
     passiveArray[0]->attributes.isAlive = false;
 
     removeDeadPassive(&passiveArray, &passiveCount);
@@ -66,7 +66,7 @@ Test(removeDeadPassive, basic, .init = setup, .fini = teardown) {
 
 Test(freePassives, basic, .init = setup, .fini = teardown) {
     int passiveCount;
-    Passive** passiveArray;
+    Passive **passiveArray;
 
     createPassive(&passiveArray, &passiveCount);
 
@@ -76,7 +76,7 @@ Test(freePassives, basic, .init = setup, .fini = teardown) {
 }
 
 Test(freePassive, basic, .init = setup, .fini = teardown) {
-    Passive* passive = initializePassive((Position){0, 0}, 1, 0, 'P');
+    Passive *passive = initializePassive((Position) {0, 0}, 1, 0, 'P');
 
     freePassive(&passive);
 
@@ -85,7 +85,7 @@ Test(freePassive, basic, .init = setup, .fini = teardown) {
 
 Test(idleAndMove, basic, .init = setup, .fini = teardown) {
     Position spawnPosition = {0, 0};
-    Passive* passive = initializePassive(spawnPosition, 1, 0, 'P');
+    Passive *passive = initializePassive(spawnPosition, 1, 0, 'P');
 
     idleAndMove(passive);
 
@@ -95,7 +95,7 @@ Test(idleAndMove, basic, .init = setup, .fini = teardown) {
 
 Test(randomMovement, basic, .init = setup, .fini = teardown) {
     Position spawnPosition = {1, 1};
-    Passive* passive = initializePassive(spawnPosition, 1, 0, 'P');
+    Passive *passive = initializePassive(spawnPosition, 1, 0, 'P');
 
     randomMovement(passive);
 

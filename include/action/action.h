@@ -8,7 +8,7 @@ void actionPlayer(Position newPosition, Entities *entities);
 
 void actionEntities(Entities *entities);
 
-void actionEnemies(Enemy **enemyArray, int enemyCount, Player* player);
+void actionEnemies(Enemy **enemyArray, int enemyCount, Player *player);
 
 void actionPassives(Passive **passiveArray, int passiveCount);
 

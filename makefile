@@ -13,6 +13,7 @@ TESTDIR = ./test/
 SOURCES = $(wildcard ${SRCDIR}action/*.c) \
 		  $(wildcard ${SRCDIR}core/*.c) \
           $(wildcard ${SRCDIR}entities/*.c) \
+          $(wildcard ${SRCDIR}map/*.c) \
           $(wildcard ${SRCDIR}stats/*.c) \
           $(wildcard ${SRCDIR}utils/*.c)
 
