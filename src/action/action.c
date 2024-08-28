@@ -1,6 +1,6 @@
 #include "../../include/action/action.h"
 #include "../../include/action/movement.h"
-#include "../../include/core/macros.h"
+#include "../../include/macros/test_macros.h"
 #include "../../include/action/combat.h"
 #include "../../include/map/map.h"
 #include <ncurses.h>

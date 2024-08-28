@@ -1,0 +1,13 @@
+#ifndef CASTAWAY_TILES_MACROS_H
+#define CASTAWAY_TILES_MACROS_H
+
+#define PLAIN_GROUND_SYMBOL ' '
+#define GRASS_SYMBOL_1 '\''
+#define GRASS_SYMBOL_2 '\"'
+#define GRASS_SYMBOL_3 ','
+#define GRASS_SYMBOL_4 '`'
+#define FLOWER_SYMBOL '*'
+#define MOUNTAIN_OUTSIDE_SYMBOL 'X'
+#define MOUNTAIN_INSIDE_SYMBOL '.'
+
+#endif //CASTAWAY_TILES_MACROS_H

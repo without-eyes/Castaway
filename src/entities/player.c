@@ -1,5 +1,5 @@
 #include "../../include/entities/player.h"
-#include "../../include/core/macros.h"
+#include "../../include/macros/entity_macros.h"
 #include "../../include/utils/draw.h"
 #include <malloc.h>
 

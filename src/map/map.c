@@ -1,5 +1,6 @@
 #include "../../include/map/map.h"
 #include "../../include/map/location.h"
+#include "../../include/macros/tiles_macros.h"
 
 chtype map[MAP_HEIGHT][MAP_WIDTH];
 

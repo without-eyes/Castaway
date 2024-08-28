@@ -2,7 +2,7 @@
 #define CASTAWAY_MAP_H
 
 #include <ncurses.h>
-#include "../core/macros.h"
+#include "../macros/screen_macros.h"
 #include "../stats/position.h"
 
 // ===== GLOBAL VARIABLE =====

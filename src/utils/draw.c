@@ -1,5 +1,7 @@
 #include "../../include/utils/draw.h"
-#include "../../include/core/macros.h"
+#include "../../include/macros/entity_macros.h"
+#include "../../include/macros/test_macros.h"
+#include "../../include/macros/tiles_macros.h"
 #include "../../include/map/map.h"
 #include <ncurses.h>
 
@@ -15,59 +17,59 @@ void playerDeathSituation(const Player *player) {
 }
 
 void drawSymbol(const Position position, const chtype symbol) {
-    short pairNumber;
+    short colorPair;
     switch (symbol & A_CHARTEXT) {
         // BLACK
         case PLAIN_GROUND_SYMBOL:
-            pairNumber = 1;
+            colorPair = BLACK_ON_BLACK;
             break;
 
-            // GREEN
+        // GREEN
         case GRASS_SYMBOL_1:
         case GRASS_SYMBOL_2:
         case GRASS_SYMBOL_3:
         case GRASS_SYMBOL_4:
-            pairNumber = 2;
+            colorPair = GREEN_ON_BLACK;
             break;
 
-            // MAGENTA
+        // MAGENTA
         case FLOWER_SYMBOL:
-            pairNumber = 3;
+            colorPair = MAGENTA_ON_BLACK;
             break;
 
-            // GREY
+        // GREY
         case MOUNTAIN_OUTSIDE_SYMBOL:
-            pairNumber = 4;
+            colorPair = GREY_ON_BLACK;
             break;
 
-            // WHITE
+        // WHITE
         case PLAYER_SYMBOL:
         case MOUNTAIN_INSIDE_SYMBOL:
-            pairNumber = 5;
+            colorPair = WHITE_ON_BLACK;
             break;
 
-            // RED
+        // RED
         case TEST_DEAD_SYMBOL:
         case TEST_ENEMY_SYMBOL:
-            pairNumber = 6;
+            colorPair = RED_ON_BLACK;
             break;
 
-            // YELLOW
+        // YELLOW
         case TEST_PASSIVE_SYMBOL:
-            pairNumber = 7;
+            colorPair = YELLOW_ON_BLACK;
             break;
 
-            // CYAN
+        // CYAN
         default:
-            pairNumber = 8;
+            colorPair = CYAN_ON_BLACK;
             break;
     }
 
     map[position.y][position.x] = symbol;
 
-    attron(COLOR_PAIR(pairNumber));
+    attron(COLOR_PAIR(colorPair));
     mvprintw(position.y, position.x, "%c", symbol);
-    attroff(COLOR_PAIR(pairNumber));
+    attroff(COLOR_PAIR(colorPair));
 
 }
 
@@ -85,14 +87,14 @@ void initColors() {
     init_color(8, 232, 232, 232); // grey
 
     short backgroundColor = COLOR_BLACK;
-    init_pair(1, COLOR_BLACK, backgroundColor);
-    init_pair(2, COLOR_GREEN, backgroundColor);
-    init_pair(3, COLOR_MAGENTA, backgroundColor);
-    init_pair(4, 8, backgroundColor);
-    init_pair(5, COLOR_WHITE, backgroundColor);
-    init_pair(6, COLOR_RED, backgroundColor);
-    init_pair(7, COLOR_YELLOW, backgroundColor);
-    init_pair(8, COLOR_CYAN, backgroundColor);
+    init_pair(BLACK_ON_BLACK, COLOR_BLACK, backgroundColor);
+    init_pair(GREEN_ON_BLACK, COLOR_GREEN, backgroundColor);
+    init_pair(MAGENTA_ON_BLACK, COLOR_MAGENTA, backgroundColor);
+    init_pair(GREY_ON_BLACK, 8, backgroundColor);
+    init_pair(WHITE_ON_BLACK, COLOR_WHITE, backgroundColor);
+    init_pair(RED_ON_BLACK, COLOR_RED, backgroundColor);
+    init_pair(YELLOW_ON_BLACK, COLOR_YELLOW, backgroundColor);
+    init_pair(CYAN_ON_BLACK, COLOR_CYAN, backgroundColor);
 }
 
 void drawMapAroundPlayer(const Player *player) {

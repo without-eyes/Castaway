@@ -1,5 +1,5 @@
 #include "../../include/stats/position.h"
-#include "../../include/core/macros.h"
+#include "../../include/macros/tiles_macros.h"
 #include "../../include/map/map.h"
 #include <stdlib.h>
 

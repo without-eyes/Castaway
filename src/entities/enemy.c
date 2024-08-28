@@ -1,6 +1,6 @@
 #include "../../include/entities/enemy.h"
 #include "../../include/action/movement.h"
-#include "../../include/core/macros.h"
+#include "../../include/macros/test_macros.h"
 #include "../../include/utils/draw.h"
 #include <malloc.h>
 #include <stdlib.h>

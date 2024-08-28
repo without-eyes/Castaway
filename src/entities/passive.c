@@ -1,6 +1,6 @@
 #include "../../include/entities/passive.h"
 #include "../../include/action/movement.h"
-#include "../../include/core/macros.h"
+#include "../../include/macros/test_macros.h"
 #include "../../include/utils/draw.h"
 #include <stdlib.h>
 #include <ncurses.h>

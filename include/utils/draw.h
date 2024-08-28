@@ -3,6 +3,17 @@
 
 #include "../entities/player.h"
 
+enum ColorsPairs {
+    BLACK_ON_BLACK = 1,
+    GREEN_ON_BLACK,
+    MAGENTA_ON_BLACK,
+    GREY_ON_BLACK,
+    WHITE_ON_BLACK,
+    RED_ON_BLACK,
+    YELLOW_ON_BLACK,
+    CYAN_ON_BLACK,
+};
+
 void playerDeathSituation(const Player *player);
 
 void drawSymbol(Position position, chtype symbol);
