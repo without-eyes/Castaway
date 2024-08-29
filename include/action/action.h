@@ -4,12 +4,12 @@
 #include "../stats/position.h"
 #include "../entities/entities.h"
 
-void actionPlayer(Position newPosition, Entities *entities);
+void executePlayerAction(Position newPosition, Entities *entities);
 
-void actionEntities(Entities *entities);
+void executeEntitiesActions(Entities *entities);
 
-void actionEnemies(Enemy **enemyArray, int enemyCount, Player *player);
+void executeEnemiesActions(Enemy **enemyArray, int enemyCount, Player *player);
 
-void actionPassives(Passive **passiveArray, int passiveCount);
+void executePassivesActions(Passive **passiveArray, int passiveCount);
 
 #endif //CASTAWAY_ACTION_H

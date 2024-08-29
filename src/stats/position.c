@@ -3,7 +3,7 @@
 #include "../../include/map/map.h"
 #include <stdlib.h>
 
-Position getRandomPosition() {
+Position getRandomPosition(void) {
     Position position;
     do {
         position.y = rand() % MAP_HEIGHT;

@@ -1,32 +1,30 @@
+#include <ctype.h>
 #include "../../include/action/input.h"
 #include "../../include/action/action.h"
+#include "../../include/macros/key_macros.h"
 
 void handleInput(const char input, Entities *entities) {
     Position position = entities->player->location.position;
-    switch (input) {
-        case 'W':
-        case 'w':
+    switch (tolower(input)) {
+        case GO_UP_KEY:
             position.y--;
             break;
 
-        case 'A':
-        case 'a':
+        case GO_LEFT_KEY:
             position.x--;
             break;
 
-        case 'S':
-        case 's':
+        case GO_DOWN_KEY:
             position.y++;
             break;
 
-        case 'D':
-        case 'd':
+        case GO_RIGHT_KEY:
             position.x++;
             break;
 
         default:
             break;
     }
-    actionPlayer(position, entities);
+    executePlayerAction(position, entities);
 }
 

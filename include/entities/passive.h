@@ -11,11 +11,11 @@ typedef struct {
 
 Passive *initializePassive(Position position, int health, int damage, chtype symbol);
 
-void createPassive(Passive ***passiveArray, int *passiveCount);
+void createPassives(Passive ***passiveArray, int *passiveCount);
 
 void removeDeadPassive(Passive ***passiveArray, int *passiveCount);
 
-void freePassives(Passive ***passiveArray, int passiveCount);
+void freePassiveArray(Passive ***passiveArray, int passiveCount);
 
 void freePassive(Passive **passive);
 

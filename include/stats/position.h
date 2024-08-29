@@ -8,7 +8,7 @@ typedef struct {
     int x;
 } Position;
 
-Position getRandomPosition();
+Position getRandomPosition(void);
 
 bool arePositionsEqual(Position first, Position second);
 

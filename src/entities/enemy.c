@@ -9,7 +9,7 @@ Enemy *initializeEnemy(const Position position, const int health, const int dama
     Enemy *enemy = (Enemy *) malloc(sizeof(Enemy));
 
     enemy->location = setLocationData(position);
-    enemy->attributes = initializeEntity(health, damage, symbol);
+    enemy->attributes = initializeAttributes(health, damage, symbol);
 
     drawSymbol(enemy->location.position, enemy->attributes.symbol);
 
@@ -26,7 +26,7 @@ void createEnemies(Enemy ***enemyArray, int *enemyCount) {
 
 void removeDeadEnemies(Enemy ***enemyArray, int *enemyCount) {
     for (int i = 0; i < *enemyCount; i++) {
-        if ((*enemyArray)[i]->attributes.isAlive) {
+        if (isAlive((*enemyArray)[i]->attributes)) {
             continue;
         }
 
@@ -41,7 +41,7 @@ void removeDeadEnemies(Enemy ***enemyArray, int *enemyCount) {
     }
 }
 
-void freeEnemies(Enemy ***enemyArray, const int enemyCount) {
+void freeEnemyArray(Enemy ***enemyArray, const int enemyCount) {
     if (*enemyArray) {
         for (int i = 0; i < enemyCount; i++) {
             if ((*enemyArray)[i]) {

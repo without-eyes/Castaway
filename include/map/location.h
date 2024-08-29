@@ -11,6 +11,8 @@ typedef struct {
 
 Location setLocationData(Position position);
 
-chtype getRandomWalkableTile();
+chtype getRandomWalkableTile(void);
+
+bool isWalkableTile(chtype tileSymbol);
 
 #endif //CASTAWAY_LOCATION_H

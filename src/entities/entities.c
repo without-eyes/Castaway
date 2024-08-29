@@ -13,7 +13,7 @@ void initializeEntities(Entities **entities) {
 
     createPlayer(&(*entities)->player);
     createEnemies(&(*entities)->enemyArray, &(*entities)->enemyCount);
-    createPassive(&(*entities)->passiveArray, &(*entities)->passiveCount);
+    createPassives(&(*entities)->passiveArray, &(*entities)->passiveCount);
 }
 
 void removeDeadEntities(Entities **entities) {
@@ -27,8 +27,8 @@ void freeEntities(Entities **entities) {
     }
 
     freePlayer(&((*entities)->player));
-    freeEnemies(&((*entities)->enemyArray), (*entities)->enemyCount);
-    freePassives(&((*entities)->passiveArray), (*entities)->passiveCount);
+    freeEnemyArray(&((*entities)->enemyArray), (*entities)->enemyCount);
+    freePassiveArray(&((*entities)->passiveArray), (*entities)->passiveCount);
 
     free(*entities);
     *entities = NULL;

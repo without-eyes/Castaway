@@ -1,12 +1,12 @@
 #include "../../include/stats/attributes.h"
 #include <criterion/criterion.h>
 
-Test(initializeEntity, basic) {
+Test(initializeAttributes, basic) {
     const int health = 0;
     const int damage = 0;
     const char symbol = '0';
 
-    Attributes attributes1 = initializeEntity(health, damage, symbol);
+    Attributes attributes1 = initializeAttributes(health, damage, symbol);
     Attributes attributes2 = {health, damage, symbol};
 
     cr_assert_eq(attributes1.health, attributes2.health);

@@ -6,7 +6,7 @@
 #include <ncurses.h>
 
 void playerDeathSituation(const Player *player) {
-    if (!player->attributes.isAlive) {
+    if (!isAlive(player->attributes)) {
         clear();
         attron(COLOR_PAIR(6));
         mvprintw(1, 1, "YOU ARE DEAD!");
@@ -79,7 +79,7 @@ void showHUD(const Player *player) {
              player->location.position.x);
 }
 
-void initColors() {
+void initColors(void) {
     if (has_colors()) {
         start_color();
     }
@@ -120,3 +120,7 @@ void drawMapAroundPlayer(const Player *player) {
     drawSymbol((Position){SCREEN_HEIGHT / 2, SCREEN_WIDTH / 2}, player->attributes.symbol);
 }
 
+void drawFrame(Entities *entities) {
+    drawMapAroundPlayer(entities->player);
+    showHUD(entities->player);
+}

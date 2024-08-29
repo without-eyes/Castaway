@@ -3,14 +3,14 @@
 
 #include "../entities/entities.h"
 
-void runGame();
+void runGame(void);
 
-void startGame();
+void startGame(void);
 
-void initializeScreen();
+void initializeScreen(void);
 
 void gameLoop(Entities *entities);
 
-void endGame();
+void endGame(void);
 
 #endif //CASTAWAY_CASTAWAY_H

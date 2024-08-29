@@ -7,12 +7,12 @@
 #include <stdlib.h>
 #include <time.h>
 
-void runGame() {
+void runGame(void) {
     startGame();
     endGame();
 }
 
-void startGame() {
+void startGame(void) {
     initializeScreen();
     srand(time(NULL));
 
@@ -27,7 +27,7 @@ void startGame() {
     freeEntities(&entities);
 }
 
-void initializeScreen() {
+void initializeScreen(void) {
     initscr();
     noecho();
     keypad(stdscr, TRUE);
@@ -37,21 +37,15 @@ void initializeScreen() {
 
 void gameLoop(Entities *entities) {
     char input;
-    while ((input = getch()) != 'q' && entities->player->attributes.isAlive) {
-        drawMapAroundPlayer(entities->player);
-
-        showHUD(entities->player);
-
+    while ((input = getch()) != 'q' && isAlive(entities->player->attributes)) {
+        drawFrame(entities);
         handleInput(input, entities);
-
-        actionEntities(entities);
-
+        executeEntitiesActions(entities);
         playerDeathSituation(entities->player);
-
         removeDeadEntities(&entities);
     }
 }
 
-void endGame() {
+void endGame(void) {
     endwin();
 }

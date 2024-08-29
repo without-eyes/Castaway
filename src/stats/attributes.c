@@ -1,12 +1,15 @@
 #include "../../include/stats/attributes.h"
 
-Attributes initializeEntity(const int health, const int damage, const chtype symbol) {
+Attributes initializeAttributes(const int health, const int damage, const chtype symbol) {
     Attributes attributes;
 
     attributes.health = health;
     attributes.damage = damage;
     attributes.symbol = symbol;
-    attributes.isAlive = true;
 
     return attributes;
+}
+
+inline bool isAlive(const Attributes entityAttributes) {
+    return entityAttributes.health > 0;
 }

@@ -9,14 +9,14 @@ Passive *initializePassive(const Position position, const int health, const int 
     Passive *passive = (Passive *) malloc(sizeof(Passive));
 
     passive->location = setLocationData(position);
-    passive->attributes = initializeEntity(health, damage, symbol);
+    passive->attributes = initializeAttributes(health, damage, symbol);
 
     drawSymbol(passive->location.position, passive->attributes.symbol);
 
     return passive;
 }
 
-void createPassive(Passive ***passiveArray, int *passiveCount) {
+void createPassives(Passive ***passiveArray, int *passiveCount) {
     *passiveCount = rand() % (TEST_PASSIVE_MAX_COUNT - TEST_PASSIVE_MIN_COUNT) + TEST_PASSIVE_MIN_COUNT;
     *passiveArray = (Passive **) malloc(*passiveCount * sizeof(Passive *));
     for (int i = 0; i < *passiveCount; i++) {
@@ -26,7 +26,7 @@ void createPassive(Passive ***passiveArray, int *passiveCount) {
 
 void removeDeadPassive(Passive ***passiveArray, int *passiveCount) {
     for (int i = 0; i < *passiveCount; i++) {
-        if ((*passiveArray)[i]->attributes.isAlive) {
+        if (isAlive((*passiveArray)[i]->attributes)) {
             continue;
         }
 
@@ -41,7 +41,7 @@ void removeDeadPassive(Passive ***passiveArray, int *passiveCount) {
     }
 }
 
-void freePassives(Passive ***passiveArray, const int passiveCount) {
+void freePassiveArray(Passive ***passiveArray, const int passiveCount) {
     if (*passiveArray) {
         for (int i = 0; i < passiveCount; i++) {
             if ((*passiveArray)[i]) {

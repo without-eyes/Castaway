@@ -32,11 +32,11 @@ Test(initializePassive, basic, .init = setup, .fini = teardown) {
     freePassive(&passive);
 }
 
-Test(createPassive, basic, .init = setup, .fini = teardown) {
+Test(createPassives, basic, .init = setup, .fini = teardown) {
     int passiveCount;
     Passive **passiveArray = NULL;
 
-    createPassive(&passiveArray, &passiveCount);
+    createPassives(&passiveArray, &passiveCount);
 
     for (int i = 0; i < passiveCount; i++) {
         cr_assert_eq(passiveArray[i]->attributes.health, 10);
@@ -47,7 +47,7 @@ Test(createPassive, basic, .init = setup, .fini = teardown) {
                      passiveArray[i]->attributes.symbol);
     }
 
-    freePassives(&passiveArray, passiveCount);
+    freePassiveArray(&passiveArray, passiveCount);
 }
 
 Test(removeDeadPassive, basic, .init = setup, .fini = teardown) {
@@ -61,16 +61,16 @@ Test(removeDeadPassive, basic, .init = setup, .fini = teardown) {
     cr_assert_eq(passiveCount, 0);
     cr_assert_eq(mvinch(0, 0), 'D');
 
-    freePassives(&passiveArray, passiveCount);
+    freePassiveArray(&passiveArray, passiveCount);
 }
 
-Test(freePassives, basic, .init = setup, .fini = teardown) {
+Test(freePassiveArray, basic, .init = setup, .fini = teardown) {
     int passiveCount;
     Passive **passiveArray;
 
-    createPassive(&passiveArray, &passiveCount);
+    createPassives(&passiveArray, &passiveCount);
 
-    freePassives(&passiveArray, passiveCount);
+    freePassiveArray(&passiveArray, passiveCount);
 
     cr_assert_null(passiveArray);
 }

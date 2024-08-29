@@ -1,23 +1,7 @@
 #include "../../include/action/combat.h"
-#include <stdlib.h>
 
-void attack(const Attributes *attackerAttributes, Attributes *defenderAttributes) {
+inline void attack(const Attributes *attackerAttributes, Attributes *defenderAttributes) {
     defenderAttributes->health -= attackerAttributes->damage;
-    if (defenderAttributes->health <= 0) {
-        defenderAttributes->isAlive = false;
-    }
-}
-
-void combatEnemy(Player *player, Enemy *enemy, const bool playerTurn) {
-    if (playerTurn) {
-        attack(&player->attributes, &enemy->attributes);
-    } else {
-        attack(&enemy->attributes, &player->attributes);
-    }
-}
-
-void combatPassive(const Player *player, Passive *passive) {
-    attack(&player->attributes, &passive->attributes);
 }
 
 Enemy *findAttackedEnemy(const Position position, Enemy **enemyArray, const int enemyCount) {
@@ -26,7 +10,6 @@ Enemy *findAttackedEnemy(const Position position, Enemy **enemyArray, const int 
             return enemyArray[i];
         }
     }
-    return NULL;
 }
 
 Passive *findAttackedPassive(const Position position, Passive **passiveArray, const int passiveCount) {
@@ -35,5 +18,4 @@ Passive *findAttackedPassive(const Position position, Passive **passiveArray, co
             return passiveArray[i];
         }
     }
-    return NULL;
 }

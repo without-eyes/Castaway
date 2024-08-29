@@ -16,7 +16,7 @@ void createEnemies(Enemy ***enemyArray, int *enemyCount);
 
 void removeDeadEnemies(Enemy ***enemyArray, int *enemyCount);
 
-void freeEnemies(Enemy ***enemyArray, int enemyCount);
+void freeEnemyArray(Enemy ***enemyArray, int enemyCount);
 
 void freeEnemy(Enemy **enemy);
 

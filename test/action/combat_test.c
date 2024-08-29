@@ -62,7 +62,7 @@ Test(findAttackedEnemy, basic, .init = setup, .fini = teardown) {
     cr_assert_eq(mvinch(enemyArray[0]->position.y, enemyArray[0]->position.x),
                  mvinch(attackedEnemy->position.y, attackedEnemy->position.x));
 
-    freeEnemies(&enemyArray, enemyCount);
+    freeEnemyArray(&enemyArray, enemyCount);
 }
 
 Test(findAttackedPassive, basic, .init = setup, .fini = teardown) {
@@ -81,5 +81,5 @@ Test(findAttackedPassive, basic, .init = setup, .fini = teardown) {
     cr_assert_eq(mvinch(passiveArray[0]->position.y, passiveArray[0]->position.x),
                  mvinch(attackedPassive->position.y, attackedPassive->position.x));
 
-    freePassives(&passiveArray, passiveCount);
+    freePassiveArray(&passiveArray, passiveCount);
 }

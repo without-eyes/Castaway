@@ -1,4 +1,4 @@
-#include "../../include/action/input.h"
+
 #include "../../include/core/castaway.h"
 #include "../../include/utils/draw.h"
 #include <criterion/criterion.h>

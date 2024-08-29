@@ -4,7 +4,7 @@
 
 chtype map[MAP_HEIGHT][MAP_WIDTH];
 
-void setMap() {
+void setMap(void) {
     for (int i = 0; i < MAP_HEIGHT; i++) {
         for (int j = 0; j < MAP_WIDTH; j++) {
             if (i == 0 || i == MAP_HEIGHT - 1 ||

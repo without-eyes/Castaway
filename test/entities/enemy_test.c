@@ -49,7 +49,7 @@ Test(createEnemies, basic, .init = setup, .fini = teardown) {
                      enemyArray[i]->attributes.symbol);
     }
 
-    freeEnemies(&enemyArray, enemyCount);
+    freeEnemyArray(&enemyArray, enemyCount);
 }
 
 Test(removeDeadEnemies, basic, .init = setup, .fini = teardown) {
@@ -63,16 +63,16 @@ Test(removeDeadEnemies, basic, .init = setup, .fini = teardown) {
     cr_assert_eq(enemyCount, 0);
     cr_assert_eq(mvinch(0, 0), 'D');
 
-    freeEnemies(&enemyArray, enemyCount);
+    freeEnemyArray(&enemyArray, enemyCount);
 }
 
-Test(freeEnemies, basic, .init = setup, .fini = teardown) {
+Test(freeEnemyArray, basic, .init = setup, .fini = teardown) {
     int enemyCount;
     Enemy **enemyArray;
 
     createEnemies(&enemyArray, &enemyCount);
 
-    freeEnemies(&enemyArray, enemyCount);
+    freeEnemyArray(&enemyArray, enemyCount);
 
     cr_assert_null(enemyArray);
 }

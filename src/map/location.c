@@ -11,7 +11,7 @@ Location setLocationData(const Position position) {
     return location;
 }
 
-chtype getRandomWalkableTile() {
+chtype getRandomWalkableTile(void) {
     int tile = rand() % 50;
     switch (tile) {
         case 0 ... 44:
@@ -29,4 +29,13 @@ chtype getRandomWalkableTile() {
         default:
             break;
     }
+}
+
+bool isWalkableTile(chtype tileSymbol) {
+    return tileSymbol == PLAIN_GROUND_SYMBOL ||
+           tileSymbol == GRASS_SYMBOL_1 ||
+           tileSymbol == GRASS_SYMBOL_2 ||
+           tileSymbol == GRASS_SYMBOL_3 ||
+           tileSymbol == GRASS_SYMBOL_4 ||
+           tileSymbol == FLOWER_SYMBOL;
 }
