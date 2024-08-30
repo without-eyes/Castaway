@@ -1,6 +1,6 @@
 #include "../../include/stats/position.h"
-#include "../../include/macros/tiles_macros.h"
 #include "../../include/map/map.h"
+#include "../../include/map/location.h"
 #include <stdlib.h>
 
 Position getRandomPosition(void) {
@@ -8,15 +8,14 @@ Position getRandomPosition(void) {
     do {
         position.y = rand() % MAP_HEIGHT;
         position.x = rand() % MAP_WIDTH;
-    } while (map[position.y][position.x] == MOUNTAIN_INSIDE_SYMBOL ||
-            map[position.y][position.x] == MOUNTAIN_OUTSIDE_SYMBOL);
+    } while (!isTileWalkable(map[position.y][position.x]));
     return position;
 }
 
-bool arePositionsEqual(Position first, Position second) {
+inline bool arePositionsEqual(const Position first, const Position second) {
     return first.y == second.y && first.x == second.x;
 }
 
-bool areEntitiesBeside(const Position first, const Position second) {
+inline bool areEntitiesBeside(const Position first, const Position second) {
     return (abs(first.y - second.y) + abs(first.x - second.x)) == 1;
 }

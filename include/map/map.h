@@ -5,11 +5,7 @@
 #include "../macros/screen_macros.h"
 #include "../stats/position.h"
 
-// ===== GLOBAL VARIABLE =====
-
 extern chtype map[MAP_HEIGHT][MAP_WIDTH];
-
-// ===========================
 
 void createMap(void);
 

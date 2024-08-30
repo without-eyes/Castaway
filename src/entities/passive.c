@@ -8,7 +8,7 @@
 Passive *initializePassive(const Position position, const int health, const int damage, const chtype symbol) {
     Passive *passive = (Passive *) malloc(sizeof(Passive));
 
-    passive->location = setLocationData(position);
+    passive->location = initializeLocation(position);
     passive->attributes = initializeAttributes(health, damage, symbol);
 
     drawSymbol(passive->location.position, passive->attributes.symbol);

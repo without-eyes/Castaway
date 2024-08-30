@@ -4,7 +4,7 @@
 #include "../entities/player.h"
 #include "../entities/entities.h"
 
-enum ColorsPairs {
+enum ColorPairs {
     BLACK_ON_BLACK = 1,
     GREEN_ON_BLACK,
     MAGENTA_ON_BLACK,
@@ -15,7 +15,7 @@ enum ColorsPairs {
     CYAN_ON_BLACK,
 };
 
-void playerDeathSituation(const Player *player);
+void showDeathScreen(const Player *player);
 
 void drawSymbol(Position position, chtype symbol);
 
@@ -25,8 +25,8 @@ void showHUD(const Player *player);
 
 void initColors(void);
 
-void drawMapAroundPlayer(const Player *player);
+void drawFrame(const Entities *entities);
 
-void drawFrame(Entities *entities);
+void drawMapAroundPlayer(const Player *player);
 
 #endif //CASTAWAY_DRAW_H

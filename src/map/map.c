@@ -20,6 +20,6 @@ void createMap(void) {
     }
 }
 
-void setCharOnMap(Position position, chtype symbol) {
+inline void setCharOnMap(const Position position, const chtype symbol) {
     map[position.y][position.x] = symbol;
 }

@@ -6,7 +6,7 @@
 Player *initializePlayer(const Position position) {
     Player *player = (Player *) malloc(sizeof(Player));
 
-    player->location = setLocationData(position);
+    player->location = initializeLocation(position);
     player->attributes = initializeAttributes(20, 2, PLAYER_SYMBOL);
 
     drawSymbol(player->location.position, player->attributes.symbol);

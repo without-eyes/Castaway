@@ -9,10 +9,10 @@ typedef struct {
     chtype tileSymbol;
 } Location;
 
-Location setLocationData(Position position);
+Location initializeLocation(Position position);
 
 chtype getRandomWalkableTile(void);
 
-bool isWalkableTile(chtype tileSymbol);
+bool isTileWalkable(chtype tileSymbol);
 
 #endif //CASTAWAY_LOCATION_H

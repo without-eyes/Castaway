@@ -35,7 +35,7 @@ void gameLoop(Entities *entities) {
         drawFrame(entities);
         handleInput(input, entities);
         executeEntitiesActions(entities);
-        playerDeathSituation(entities->player);
+        showDeathScreen(entities->player);
         removeDeadEntities(&entities);
     }
 }
