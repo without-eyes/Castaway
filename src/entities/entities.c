@@ -2,6 +2,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+void createEntities(Entities **entities) {
+    initializeEntities(entities);
+    createPlayer(&(*entities)->player);
+    initializeEnemyArray(&(*entities)->enemyArray, &(*entities)->enemyCount);
+    createPassives(&(*entities)->passiveArray, &(*entities)->passiveCount);
+}
+
 void initializeEntities(Entities **entities) {
     *entities = (Entities *) malloc(sizeof(Entities));
 
@@ -10,10 +17,6 @@ void initializeEntities(Entities **entities) {
     (*entities)->passiveArray = NULL;
     (*entities)->enemyCount = 0;
     (*entities)->passiveCount = 0;
-
-    createPlayer(&(*entities)->player);
-    createEnemies(&(*entities)->enemyArray, &(*entities)->enemyCount);
-    createPassives(&(*entities)->passiveArray, &(*entities)->passiveCount);
 }
 
 void removeDeadEntities(Entities **entities) {

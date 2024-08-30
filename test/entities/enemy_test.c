@@ -7,7 +7,7 @@
 #include <ncurses.h>
 
 static void setup() {
-    initializeScreen();
+    setScreenAttributes();
     setMap();
 }
 
@@ -34,11 +34,11 @@ Test(initializeEnemy, basic, .init = setup, .fini = teardown) {
     freeEnemy(&enemy);
 }
 
-Test(createEnemies, basic, .init = setup, .fini = teardown) {
+Test(initializeEnemyArray, basic, .init = setup, .fini = teardown) {
     int enemyCount;
     Enemy **enemyArray = NULL;
 
-    createEnemies(&enemyArray, &enemyCount);
+    initializeEnemyArray(&enemyArray, &enemyCount);
 
     for (int i = 0; i < enemyCount; i++) {
         cr_assert_eq(enemyArray[i]->attributes.health, 15);
@@ -70,7 +70,7 @@ Test(freeEnemyArray, basic, .init = setup, .fini = teardown) {
     int enemyCount;
     Enemy **enemyArray;
 
-    createEnemies(&enemyArray, &enemyCount);
+    initializeEnemyArray(&enemyArray, &enemyCount);
 
     freeEnemyArray(&enemyArray, enemyCount);
 

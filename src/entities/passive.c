@@ -42,56 +42,45 @@ void removeDeadPassive(Passive ***passiveArray, int *passiveCount) {
 }
 
 void freePassiveArray(Passive ***passiveArray, const int passiveCount) {
-    if (*passiveArray) {
-        for (int i = 0; i < passiveCount; i++) {
-            if ((*passiveArray)[i]) {
-                freePassive(&(*passiveArray)[i]);
-            }
-        }
-        free(*passiveArray);
-        *passiveArray = NULL;
+    if (*passiveArray == NULL) {
+        return;
     }
+
+    for (int i = 0; i < passiveCount; i++) {
+        if ((*passiveArray)[i]) {
+            freePassive(&(*passiveArray)[i]);
+        }
+    }
+    free(*passiveArray);
+    *passiveArray = NULL;
 }
 
 void freePassive(Passive **passive) {
-    if (*passive) {
-        free(*passive);
-        *passive = NULL;
+    if (*passive == NULL) {
+        return;
     }
+
+    free(*passive);
+    *passive = NULL;
 }
 
 void idleAndMove(Passive *passive) {
     static int idleTime = 0;
     if (idleTime >= TEST_PASSIVE_IDLE_TIME) {
         idleTime = 0;
-        randomMovement(passive);
+        moveRandomly(passive);
     } else {
         idleTime += rand() % 4;
     }
 }
 
-void randomMovement(Passive *passive) {
+void moveRandomly(Passive *passive) {
     Position newPosition = passive->location.position;
-    unsigned char direction = rand() % 4;
-    switch (direction) {
-        case 0:
-            newPosition.y++;
-            break;
-
-        case 1:
-            newPosition.y--;
-            break;
-
-        case 2:
-            newPosition.x++;
-            break;
-
-        case 3:
-            newPosition.x--;
-            break;
-
-        default:
-            break;
+    switch (rand() % 4) {
+        case 0: newPosition.y++; break;
+        case 1: newPosition.y--; break;
+        case 2: newPosition.x++; break;
+        case 3: newPosition.x--; break;
     }
     moveEntity(newPosition, &passive->location, passive->attributes.symbol);
 }

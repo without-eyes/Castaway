@@ -5,12 +5,12 @@
 
 void runGame(void);
 
-void startGame(void);
+void startGame(Entities **entities);
 
-void initializeScreen(void);
+void setScreenAttributes(void);
 
 void gameLoop(Entities *entities);
 
-void endGame(void);
+void endGame(Entities **entities);
 
 #endif //CASTAWAY_CASTAWAY_H

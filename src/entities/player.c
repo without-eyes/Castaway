@@ -19,8 +19,10 @@ void createPlayer(Player **player) {
 }
 
 void freePlayer(Player **player) {
-    if (*player) {
-        free(*player);
-        *player = NULL;
+    if (*player == NULL) {
+        return;
     }
+
+    free(*player);
+    *player = NULL;
 }

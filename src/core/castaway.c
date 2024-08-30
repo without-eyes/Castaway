@@ -8,26 +8,20 @@
 #include <time.h>
 
 void runGame(void) {
-    startGame();
-    endGame();
-}
-
-void startGame(void) {
-    initializeScreen();
-    srand(time(NULL));
-
-    setMap();
-
     Entities *entities = NULL;
-    initializeEntities(&entities);
-
-    showHUD(entities->player);
+    startGame(&entities);
     gameLoop(entities);
-
-    freeEntities(&entities);
+    endGame(&entities);
 }
 
-void initializeScreen(void) {
+void startGame(Entities **entities) {
+    setScreenAttributes();
+    srand(time(NULL));
+    createMap();
+    createEntities(entities);
+}
+
+void setScreenAttributes(void) {
     initscr();
     noecho();
     keypad(stdscr, TRUE);
@@ -46,6 +40,7 @@ void gameLoop(Entities *entities) {
     }
 }
 
-void endGame(void) {
+void endGame(Entities **entities) {
+    freeEntities(entities);
     endwin();
 }

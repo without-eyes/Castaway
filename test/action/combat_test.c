@@ -5,7 +5,7 @@
 #include <ncurses.h>
 
 static void setup() {
-    initializeScreen();
+    setScreenAttributes();
     setMap();
 }
 

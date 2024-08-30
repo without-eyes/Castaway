@@ -5,8 +5,8 @@
 #include <criterion/criterion.h>
 
 static void setup() {
-    initializeScreen();
-    setMap();
+    setScreenAttributes();
+    createMap();
 }
 
 static void teardown() {

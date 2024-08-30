@@ -6,7 +6,7 @@
 #include <ncurses.h>
 
 static void setup() {
-    initializeScreen();
+    setScreenAttributes();
     setMap();
 }
 
@@ -14,9 +14,9 @@ static void teardown() {
     endGame();
 }
 
-Test(initializeEntities, basic, .init = setup, .fini = teardown) {
+Test(createEntities, basic, .init = setup, .fini = teardown) {
     Entities *entities = (Entities *) malloc(sizeof(Entities));
-    initializeEntities(&entities);
+    createEntities(&entities);
 
     cr_assert_eq(entities->player->attributes.health, 20);
     cr_assert_eq(entities->player->attributes.damage, 2);
@@ -68,7 +68,7 @@ Test(removeDeadEntities, basic, .init = setup, .fini = teardown) {
 
 Test(freeEntities, basic, .init = setup, .fini = teardown) {
     Entities *entities = (Entities *) malloc(sizeof(Entities));
-    initializeEntities(&entities);
+    createEntities(&entities);
 
     freeEntities(&entities);
 

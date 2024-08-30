@@ -13,6 +13,8 @@ typedef struct {
     Passive **passiveArray;
 } Entities;
 
+void createEntities(Entities **entities);
+
 void initializeEntities(Entities **entities);
 
 void removeDeadEntities(Entities **entities);

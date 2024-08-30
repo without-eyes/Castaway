@@ -5,7 +5,7 @@
 #include <ncurses.h>
 
 static void setup() {
-    initializeScreen();
+    setScreenAttributes();
     setMap();
 }
 
@@ -93,11 +93,11 @@ Test(idleAndMove, basic, .init = setup, .fini = teardown) {
     cr_assert_eq(passive->position.x, spawnPosition.x);
 }
 
-Test(randomMovement, basic, .init = setup, .fini = teardown) {
+Test(moveRandomly, basic, .init = setup, .fini = teardown) {
     Position spawnPosition = {1, 1};
     Passive *passive = initializePassive(spawnPosition, 1, 0, 'P');
 
-    randomMovement(passive);
+    moveRandomly(passive);
 
     cr_assert_eq(passive->position.y != spawnPosition.y || passive->position.x != spawnPosition.x, true);
 }

@@ -16,7 +16,7 @@ Enemy *initializeEnemy(const Position position, const int health, const int dama
     return enemy;
 }
 
-void createEnemies(Enemy ***enemyArray, int *enemyCount) {
+void initializeEnemyArray(Enemy ***enemyArray, int *enemyCount) {
     *enemyCount = rand() % (TEST_ENEMY_MAX_COUNT - TEST_ENEMY_MIN_COUNT) + TEST_ENEMY_MIN_COUNT;
     *enemyArray = (Enemy **) malloc(*enemyCount * sizeof(Enemy *));
     for (int i = 0; i < *enemyCount; i++) {
@@ -42,39 +42,43 @@ void removeDeadEnemies(Enemy ***enemyArray, int *enemyCount) {
 }
 
 void freeEnemyArray(Enemy ***enemyArray, const int enemyCount) {
-    if (*enemyArray) {
-        for (int i = 0; i < enemyCount; i++) {
-            if ((*enemyArray)[i]) {
-                freeEnemy(&(*enemyArray)[i]);
-            }
-        }
-        free(*enemyArray);
-        *enemyArray = NULL;
+    if (*enemyArray == NULL) {
+        return;
     }
+
+    for (int i = 0; i < enemyCount; i++) {
+        if ((*enemyArray)[i]) {
+            freeEnemy(&(*enemyArray)[i]);
+        }
+    }
+
+    free(*enemyArray);
+    *enemyArray = NULL;
 }
 
 void freeEnemy(Enemy **enemy) {
-    if (*enemy) {
-        free(*enemy);
-        *enemy = NULL;
+    if (*enemy == NULL) {
+        return;
     }
+
+    free(*enemy);
+    *enemy = NULL;
 }
 
 void goToPlayer(Enemy *enemy, const Position playerPosition) {
-    Position newPosition;
-    if (enemy->location.position.x < playerPosition.x) {
-        newPosition = (Position) {enemy->location.position.y, enemy->location.position.x + 1};
-        moveEntity(newPosition, &enemy->location, enemy->attributes.symbol);
-    } else if (enemy->location.position.x > playerPosition.x) {
-        newPosition = (Position) {enemy->location.position.y, enemy->location.position.x - 1};
-        moveEntity(newPosition, &enemy->location, enemy->attributes.symbol);
+    Position newPosition = enemy->location.position;
+
+    if (newPosition.x < playerPosition.x) {
+        newPosition.x++;
+    } else if (newPosition.x > playerPosition.x) {
+        newPosition.x--;
     }
 
-    if (enemy->location.position.y < playerPosition.y) {
-        newPosition = (Position) {enemy->location.position.y + 1, enemy->location.position.x};
-        moveEntity(newPosition, &enemy->location, enemy->attributes.symbol);
-    } else if (enemy->location.position.y > playerPosition.y) {
-        newPosition = (Position) {enemy->location.position.y - 1, enemy->location.position.x};
-        moveEntity(newPosition, &enemy->location, enemy->attributes.symbol);
+    if (newPosition.y < playerPosition.y) {
+        newPosition.y++;
+    } else if (newPosition.y > playerPosition.y) {
+        newPosition.y--;
     }
+
+    moveEntity(newPosition, &enemy->location, enemy->attributes.symbol);
 }

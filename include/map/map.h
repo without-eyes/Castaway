@@ -11,7 +11,7 @@ extern chtype map[MAP_HEIGHT][MAP_WIDTH];
 
 // ===========================
 
-void setMap(void);
+void createMap(void);
 
 void setCharOnMap(Position position, chtype symbol);
 

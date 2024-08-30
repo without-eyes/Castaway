@@ -12,7 +12,7 @@ typedef struct {
 
 Enemy *initializeEnemy(Position position, int health, int damage, chtype symbol);
 
-void createEnemies(Enemy ***enemyArray, int *enemyCount);
+void initializeEnemyArray(Enemy ***enemyArray, int *enemyCount);
 
 void removeDeadEnemies(Enemy ***enemyArray, int *enemyCount);
 

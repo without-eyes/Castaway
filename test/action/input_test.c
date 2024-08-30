@@ -4,7 +4,7 @@
 #include <criterion/criterion.h>
 
 static void setup() {
-    initializeScreen();
+    setScreenAttributes();
     setMap();
 }
 

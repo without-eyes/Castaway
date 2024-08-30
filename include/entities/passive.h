@@ -21,6 +21,6 @@ void freePassive(Passive **passive);
 
 void idleAndMove(Passive *passive);
 
-void randomMovement(Passive *passive);
+void moveRandomly(Passive *passive);
 
 #endif //CASTAWAY_PASSIVE_H
