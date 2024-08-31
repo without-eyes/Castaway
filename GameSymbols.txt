@@ -1,0 +1,24 @@
+@ 	 | player
+~        | water
++, /     | opened/closed door
+.        | stone/mountain inside?
+,'"`:;¨¸ | grass
+?!       | unopend item
+#        | bridge/path
+*        | flower, gold
+S	 | snake
+%	 | ladder
+±	 | grave
+×X	 | treasure mark?
+░▒▓█	 | ?
+-|\/	 | walls?
+J	 | hook
+}{	 | bow
+[]()	 | armor?
+Ж	 | spider
+Ф	 | axe?
+T	 | pickaxe
+г	 | hoe
+§&	 | potion
+O0o	 | hole
+

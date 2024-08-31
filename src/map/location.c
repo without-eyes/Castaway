@@ -19,6 +19,7 @@ chtype getRandomWalkableTile(void) {
         case 47:        return GRASS_SYMBOL_3;
         case 48:        return GRASS_SYMBOL_4;
         case 49:        return FLOWER_SYMBOL;
+        default:        return '?';
     }
 }
 

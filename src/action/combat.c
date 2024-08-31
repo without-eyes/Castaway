@@ -10,6 +10,7 @@ Enemy *findAttackedEnemy(const Position position, Enemy **enemyArray, const int 
             return enemyArray[i];
         }
     }
+    return NULL;
 }
 
 Passive *findAttackedPassive(const Position position, Passive **passiveArray, const int passiveCount) {
@@ -18,4 +19,5 @@ Passive *findAttackedPassive(const Position position, Passive **passiveArray, co
             return passiveArray[i];
         }
     }
+    return NULL;
 }
