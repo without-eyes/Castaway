@@ -25,6 +25,7 @@ Before running the game, ensure you have the following installed:
 
 ### Setup
 
+#### Linux:
 1. Clone the repository:
 
     ```bash
@@ -42,7 +43,7 @@ Before running the game, ensure you have the following installed:
     ```bash
     sudo apt-get install libncurses5-dev libncursesw5-dev
     sudo apt-get install valgrind
-    apt-get install libcriterion-dev
+    sudo apt install libcriterion-dev
     ```
 
 4. Run the game:
