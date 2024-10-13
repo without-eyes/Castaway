@@ -12,14 +12,20 @@ Location initializeLocation(const Position position) {
 }
 
 chtype getRandomWalkableTile(void) {
-    switch (rand() % 50) {
-        case 0 ... 44:  return PLAIN_GROUND_SYMBOL;
-        case 45:        return GRASS_SYMBOL_1;
-        case 46:        return GRASS_SYMBOL_2;
-        case 47:        return GRASS_SYMBOL_3;
-        case 48:        return GRASS_SYMBOL_4;
-        case 49:        return FLOWER_SYMBOL;
-        default:        return '?';
+    const int randValue = rand() % 50;
+
+    if (randValue >= 0 && randValue <= 44) {
+        return PLAIN_GROUND_SYMBOL;
+    } else if (randValue == 45) {
+        return GRASS_SYMBOL_1;
+    } else if (randValue == 46) {
+        return GRASS_SYMBOL_2;
+    } else if (randValue == 47) {
+        return GRASS_SYMBOL_3;
+    } else if (randValue == 48) {
+        return GRASS_SYMBOL_4;
+    } else {
+        return FLOWER_SYMBOL;
     }
 }
 

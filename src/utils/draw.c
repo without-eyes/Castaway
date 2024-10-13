@@ -40,7 +40,7 @@ void drawSymbol(const Position position, const chtype symbol) {
 }
 
 void showHUD(const Player *player) {
-    mvprintw(SCREEN_HEIGHT + 1, 0, "                             ");
+    clrtoeol();
     mvprintw(SCREEN_HEIGHT + 1, 0, "Health: %d  Position: %d %d", player->attributes.health,
              player->location.position.y,
              player->location.position.x);

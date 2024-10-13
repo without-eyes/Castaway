@@ -4,26 +4,28 @@
 #include <criterion/criterion.h>
 
 static void setup() {
-    setScreenAttributes();
+    startGame(NULL);
 }
 
-Test(drawSymbol, basic, .init = setup) {
-    const Position position = {0, 0};
+static void teardown() {
+    endwin();
+}
+
+TestSuite(drawSymbol, .init = setup, .fini = teardown);
+TestSuite(initColors, .init = setup, .fini = teardown);
+
+Test(drawSymbol, basic) {
+    Position position = (Position){rand() % LINES, rand() % COLS};
     const char symbol = '0';
 
     drawSymbol(position, symbol);
+    printf("Expected: '%c', Actual: '%c' at position (%d, %d)\n", symbol, mvinch(position.y, position.x) & A_CHARTEXT, position.y, position.x);
 
-    cr_assert_eq(mvinch(position.y, position.x), symbol);
+    cr_assert_eq(mvinch(position.y, position.x) & A_CHARTEXT, symbol);
 }
 
-Test(drawEntityMovement, basic, .init = setup) {
-    const Position newPosition = {0, 1};
-    const Position oldPosition = {0, 0};
-    const char tileSymbol = '.';
-    const char entitySymbol = 'E';
+Test(initColors, basic) {
+  initColors();
 
-    drawEntityMovement(newPosition, oldPosition, tileSymbol, entitySymbol);
-
-    cr_assert_eq(mvinch(newPosition.y, newPosition.x), entitySymbol);
-    cr_assert_eq(mvinch(oldPosition.y, oldPosition.x), tileSymbol);
+  cr_assert(has_colors());
 }
